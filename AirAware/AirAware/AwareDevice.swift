@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UUSwiftNetworking
 
 public class AwareDevice
 {
@@ -32,5 +33,21 @@ public class AwareDevice
 		macAddress = dictionary["macAddress"] as? String ?? ""
 		name = dictionary["name"] as? String ?? ""
 		preference = dictionary["preference"] as? String ?? ""
+	}
+
+	public func fetchDisplayMode(_ completion : @escaping (String)->Void) {
+		let path = AwareService.deviceModePath(self)
+		let request = UUHttpRequest(url: path)
+		request.headerFields = ["Authorization" : "Bearer \(AwareService.shared.accessToken)"]
+
+		_ = UUHttpSession.executeRequest(request, { response in
+			if let dictionary = response.parsedResponse as? [String : Any],
+			   let mode = dictionary["mode"] as? String
+			{
+				DispatchQueue.main.async {
+					completion(mode)
+				}
+			}
+		})
 	}
 }

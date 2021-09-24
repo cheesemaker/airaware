@@ -23,4 +23,8 @@ extension AwareService {
 		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/latest?fahrenheit=true"
 	}
 
+	static func deviceModePath(_ device : AwareDevice) -> String {
+		return "https://developer-apis.awair.is/v1/devices/\(device.deviceType)/\(device.deviceId)/display"
+	}
+
 }

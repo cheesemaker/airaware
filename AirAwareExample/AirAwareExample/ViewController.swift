@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 	@IBOutlet var pm25Label : UILabel!
 	@IBOutlet var luxLabel : UILabel!
 	@IBOutlet var spl_aLabel: UILabel!
+	@IBOutlet var mode : UILabel!
 
 	var devices : [AwareDevice] = []
 
@@ -66,12 +67,11 @@ class ViewController: UIViewController {
 
 		if let device = self.devices.first {
 
-			let end = Date()
-			let start = end.uuAddDays(-1)
-			AwareService.shared.fetchDataFromRange(device: device, start: start, end: end) { dataArray in
-
+			device.fetchDisplayMode { mode in
+				self.mode.text = mode
 			}
-/*			AwareService.shared.fetchLatestAverageData(device: device) { data in
+
+			AwareService.shared.fetchLatestAverageData(device: device) { data in
 				//AwairService.shared.fetchCurrentData(device: device) { data in
 
 				self.scoreLabel.text = data.score != -1 ? String(data.score) : "Unavailable"
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
 				self.luxLabel.text = data.lux != -1 ? String(data.lux) : "Unavailable"
 				//self.spl_aLabel.text = String(data.spl_a)
 			}
- */
+
 		}
 	}
 }
