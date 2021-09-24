@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "UUSwiftCore",
+        "repositoryURL": "https://github.com/SilverPineSoftware/UUSwiftCore.git",
+        "state": {
+          "branch": null,
+          "revision": "028ebae602272ac68c0ae8840b2269f14fd1a58b",
+          "version": "1.0.4"
+        }
+      },
+      {
+        "package": "UUSwiftNetworking",
+        "repositoryURL": "https://github.com/SilverPineSoftware/UUSwiftNetworking",
+        "state": {
+          "branch": null,
+          "revision": "8d587368712ffad5ed1b69eac0b2ae84040853df",
+          "version": "1.0.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
