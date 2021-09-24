@@ -20,11 +20,15 @@ extension AwareService {
 	}
 
 	static func latestDataPath(_ device : AwareDevice) -> String {
-		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/latest?fahrenheit=true"
+		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/latest?fahrenheit=\(device.fahrenheit)"
 	}
 
 	static func deviceModePath(_ device : AwareDevice) -> String {
 		return "https://developer-apis.awair.is/v1/devices/\(device.deviceType)/\(device.deviceId)/display"
+	}
+
+	static func devicePowerPath(_ device : AwareDevice) -> String {
+		return "https://developer-apis.awair.is/v1/devices/\(device.deviceType)/\(device.deviceId)/power-status"
 	}
 
 }

@@ -119,6 +119,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQ1-Wy-6UE">
+                                <rect key="frame" x="352" y="44" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9R-Cq-q02">
+                                <rect key="frame" x="302" y="44" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -132,13 +144,16 @@
                             <constraint firstItem="GEz-On-AgS" firstAttribute="centerY" secondItem="fHf-gf-Unn" secondAttribute="centerY" id="9Z1-cm-OYO"/>
                             <constraint firstItem="hdN-Ii-298" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AwQ-pA-aQm"/>
                             <constraint firstItem="Xbm-ID-Z3Z" firstAttribute="leading" secondItem="3u4-qR-0c6" secondAttribute="trailing" constant="20" id="GGS-kG-5ts"/>
+                            <constraint firstItem="S9R-Cq-q02" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GSc-7o-BTH"/>
                             <constraint firstItem="uty-OJ-QD2" firstAttribute="top" secondItem="H5q-eX-5Lc" secondAttribute="bottom" constant="8" id="H7q-cT-AZA"/>
                             <constraint firstItem="H5q-eX-5Lc" firstAttribute="leading" secondItem="3u4-qR-0c6" secondAttribute="leading" id="Lpb-ly-SqP"/>
                             <constraint firstItem="dSV-hY-Nid" firstAttribute="centerY" secondItem="oqp-Wn-1uX" secondAttribute="centerY" id="M7Y-3T-JhH"/>
+                            <constraint firstItem="SQ1-Wy-6UE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PFE-Wn-BV5"/>
                             <constraint firstItem="3u4-qR-0c6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Prz-sA-yXe"/>
                             <constraint firstItem="qUb-SW-ucU" firstAttribute="leading" secondItem="Xbm-ID-Z3Z" secondAttribute="leading" id="QSz-rH-7V2"/>
                             <constraint firstItem="uty-OJ-QD2" firstAttribute="leading" secondItem="3u4-qR-0c6" secondAttribute="leading" id="SvE-Lq-0ye"/>
                             <constraint firstItem="GEz-On-AgS" firstAttribute="leading" secondItem="Xbm-ID-Z3Z" secondAttribute="leading" id="TjX-gb-nng"/>
+                            <constraint firstItem="SQ1-Wy-6UE" firstAttribute="leading" secondItem="S9R-Cq-q02" secondAttribute="trailing" constant="8" symbolic="YES" id="Vtl-tF-LoT"/>
                             <constraint firstItem="Fs5-vB-Tag" firstAttribute="centerY" secondItem="uty-OJ-QD2" secondAttribute="centerY" id="WaR-f1-wTw"/>
                             <constraint firstItem="q4u-Av-Pvk" firstAttribute="leading" secondItem="S7n-V8-IAy" secondAttribute="trailing" constant="8" symbolic="YES" id="bTt-0O-Owt"/>
                             <constraint firstItem="hdN-Ii-298" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="cPH-4g-Oui"/>
@@ -156,14 +171,17 @@
                             <constraint firstItem="dSV-hY-Nid" firstAttribute="leading" secondItem="Xbm-ID-Z3Z" secondAttribute="leading" id="rr9-dM-SUJ"/>
                             <constraint firstItem="fHf-gf-Unn" firstAttribute="leading" secondItem="3u4-qR-0c6" secondAttribute="leading" id="ssn-12-2ZF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZRT-GY-A2q" secondAttribute="bottom" constant="40" id="v4A-qg-C9x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SQ1-Wy-6UE" secondAttribute="trailing" constant="20" id="wc6-rw-CjX"/>
                             <constraint firstItem="bwe-m7-Dt5" firstAttribute="leading" secondItem="3u4-qR-0c6" secondAttribute="leading" id="yeO-Hy-OTL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="batteryStatus" destination="SQ1-Wy-6UE" id="5lZ-ir-7bX"/>
                         <outlet property="co2Label" destination="Fs5-vB-Tag" id="vvp-aB-jO3"/>
                         <outlet property="humidityLabel" destination="qUb-SW-ucU" id="DHg-U8-vRh"/>
                         <outlet property="luxLabel" destination="GEz-On-AgS" id="pje-fx-86L"/>
                         <outlet property="mode" destination="q4u-Av-Pvk" id="BOG-tR-88h"/>
+                        <outlet property="pluggedStatus" destination="S9R-Cq-q02" id="h1s-TH-9l0"/>
                         <outlet property="pm25Label" destination="Ce5-eM-snH" id="dHy-O5-kXs"/>
                         <outlet property="scoreLabel" destination="hdN-Ii-298" id="sTs-JK-fia"/>
                         <outlet property="temperatureLabel" destination="Xbm-ID-Z3Z" id="3b5-Lv-lg3"/>

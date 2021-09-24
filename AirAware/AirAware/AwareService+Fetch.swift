@@ -24,7 +24,7 @@ extension AwareService {
 
 		let path = AwareService.rawDataPath(device)
 		let args : UUQueryStringArgs = [
-										 "fahrenheit" : "true",
+										 "fahrenheit" : device.fahrenheit,
 										 "from" : startString,
 										 "to" : endString,
 									   ]
@@ -56,7 +56,7 @@ extension AwareService {
 		let path = AwareService.latestFiveMinuteAveragePath(device)
 		// ?from=from&to=to&limit=limit&desc=desc&fahrenheit=fahrenheit
 		let args : UUQueryStringArgs = [
-										 "fahrenheit" : "true",
+										 "fahrenheit" : device.fahrenheit,
 										 "limit" : 1
 									   ]
 

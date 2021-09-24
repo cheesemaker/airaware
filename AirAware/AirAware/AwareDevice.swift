@@ -50,4 +50,30 @@ public class AwareDevice
 			}
 		})
 	}
+
+	public func fetchPowerStatus(_ completion : @escaping (Double?, Bool?)->Void) {
+		let path = AwareService.devicePowerPath(self)
+		let request = UUHttpRequest(url: path)
+		request.headerFields = ["Authorization" : "Bearer \(AwareService.shared.accessToken)"]
+
+		_ = UUHttpSession.executeRequest(request, { response in
+
+			var percentageReading : Double? = nil
+			var pluggedStatus : Bool? = nil
+
+			if let dictionary = response.parsedResponse as? [String : Any] {
+				if let percentage = dictionary["percentage"] as? Double {
+					percentageReading = percentage
+				}
+
+				if let plugged = dictionary["plugged"] as? Bool {
+					pluggedStatus = plugged
+				}
+			}
+
+			DispatchQueue.main.async {
+				completion(percentageReading, pluggedStatus)
+			}
+		})
+	}
 }

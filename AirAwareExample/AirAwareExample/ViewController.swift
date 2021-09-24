@@ -19,6 +19,8 @@ class ViewController: UIViewController {
 	@IBOutlet var luxLabel : UILabel!
 	@IBOutlet var spl_aLabel: UILabel!
 	@IBOutlet var mode : UILabel!
+	@IBOutlet var pluggedStatus : UILabel!
+	@IBOutlet var batteryStatus : UILabel!
 
 	var devices : [AwareDevice] = []
 
@@ -69,6 +71,19 @@ class ViewController: UIViewController {
 
 			device.fetchDisplayMode { mode in
 				self.mode.text = mode
+			}
+
+			device.fetchPowerStatus { battery, plugged in
+				// Default to not displaying since not all devices support fetching the power status...
+				self.batteryStatus.text = ""
+				self.pluggedStatus.text = ""
+
+				if let battery = battery {
+					self.batteryStatus.text = "\(battery)%"
+				}
+				if let plugged = plugged {
+					self.pluggedStatus.text = plugged ? "Charging" : "Unplugged"
+				}
 			}
 
 			AwareService.shared.fetchLatestAverageData(device: device) { data in
