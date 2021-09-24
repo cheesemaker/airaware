@@ -21,7 +21,7 @@ Then, following the instructions for [integrating Carthage frameworks into your 
 
 ## Requirements
 
-This library requires a deployment target of iOS 10.0 or greater or OSX 10.10 or greater.
+This library requires a deployment target of iOS 13.0 or greater or OSX 10.10 or greater.
 AirAware currently supports Swift version 4.0 
 
 ## Contributing
