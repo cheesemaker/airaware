@@ -15,5 +15,12 @@ extension AwareService {
 		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/5-min-avg"
 	}
 
-	//let dataPath = "https://developer-apis.awair.is/v1/users/self/devices/device_type/device_id/air-data/raw?from=from&to=to&limit=limit&desc=desc&fahrenheit=fahrenheit"
+	static func rawDataPath(_ device : AwareDevice) -> String {
+		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/raw"
+	}
+
+	static func latestDataPath(_ device : AwareDevice) -> String {
+		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/latest?fahrenheit=true"
+	}
+
 }

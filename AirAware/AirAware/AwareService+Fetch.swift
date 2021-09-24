@@ -12,6 +12,43 @@ extension AwareService {
 
 	public func fetchDataFromRange(device : AwareDevice, start : Date, end : Date, _ completion : @escaping([AwareData])->Void) {
 
+		var endString = end.uuRfc3339StringUtc()
+		var startString = start.uuRfc3339StringUtc()
+
+		// Dummy proof the arguments...
+		if start > end {
+			let swap = endString
+			endString = startString
+			startString = swap
+		}
+
+		let path = AwareService.rawDataPath(device)
+		let args : UUQueryStringArgs = [
+										 "fahrenheit" : "true",
+										 "from" : startString,
+										 "to" : endString,
+									   ]
+
+		let request = UUHttpRequest(url: path, queryArguments: args)
+		request.headerFields = ["Authorization" : "Bearer \(self.accessToken)"]
+
+		_ = UUHttpSession.executeRequest(request, { response in
+
+			var returnArray : [AwareData] = []
+
+			if let data = response.parsedResponse as? [String : Any],
+			   let dataArray = data["data"] as? [[String : Any]] {
+
+				for entry in dataArray {
+					let awareData = AwareData.buildFromServerResponse(entry)
+					returnArray.append(awareData)
+				}
+			}
+
+			DispatchQueue.main.async {
+				completion(returnArray)
+			}
+		})
 	}
 
 	public func fetchLatestAverageData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
@@ -19,80 +56,46 @@ extension AwareService {
 		let path = AwareService.latestFiveMinuteAveragePath(device)
 		// ?from=from&to=to&limit=limit&desc=desc&fahrenheit=fahrenheit
 		let args : UUQueryStringArgs = [
-										 "fahrenheight" : "yes",
+										 "fahrenheit" : "true",
 										 "limit" : 1
 									   ]
+
 		let request = UUHttpRequest(url: path, queryArguments: args)
 		request.headerFields = ["Authorization" : "Bearer \(self.accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
 
-			var compiledDictionary : [String:Any] = [:]
-
 			if let data = response.parsedResponse as? [String : Any],
-			   let dataArray = data["data"] as? [[String : Any]] {
+			   let dataArray = data["data"] as? [[String : Any]],
+			   let entry = dataArray.last {
 
-				for entry in dataArray {
-					if let score = entry["score"] as? Int {
-						compiledDictionary["score"] = score
-					}
+				let awareData = AwareData.buildFromServerResponse(entry)
 
-					if let sensorArray = entry["sensors"] as? [[String : Any]] {
-						for sensor in sensorArray {
-							let name = sensor["comp"] as? String ?? "Unknown"
-							let value = sensor["value"] as? Double ?? -1
-
-							compiledDictionary[name] = value
-
-							print("\(name) = \(value)")
-						}
-					}
+				DispatchQueue.main.async {
+					completion(awareData)
 				}
 			}
-
-			let awareData = AwareData(compiledDictionary)
-
-			DispatchQueue.main.async {
-				completion(awareData)
-			}
-
 		})
 	}
 
 
 	public func fetchCurrentData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
 
-		let request = UUHttpRequest(url: device.fetchDataPath())
+		let request = UUHttpRequest(url: AwareService.latestDataPath(device))
 		request.headerFields = ["Authorization" : "Bearer \(self.accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
 
-			var compiledDictionary : [String:Any] = [:]
-
 			if let data = response.parsedResponse as? [String : Any],
-			   let dataArray = data["data"] as? [[String : Any]] {
+			   let dataArray = data["data"] as? [[String : Any]],
+			   let entry = dataArray.last {
 
-				for entry in dataArray {
-					if let score = entry["score"] as? Int {
-						compiledDictionary["score"] = score
-					}
-
-					if let sensorArray = entry["sensors"] as? [[String : Any]] {
-						for sensor in sensorArray {
-							let name = sensor["comp"] as? String ?? "Unknown"
-							let value = sensor["value"] as? Double ?? -1
-
-							compiledDictionary[name] = value
-						}
-					}
+				let awareData = AwareData.buildFromServerResponse(entry)
+				DispatchQueue.main.async {
+					completion(awareData)
 				}
 			}
 
-			let awareData = AwareData(compiledDictionary)
-
-			DispatchQueue.main.async {
-				completion(awareData)
-			}
 		})
 	}
 

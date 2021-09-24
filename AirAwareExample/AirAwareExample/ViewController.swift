@@ -66,7 +66,12 @@ class ViewController: UIViewController {
 
 		if let device = self.devices.first {
 
-			AwareService.shared.fetchLatestAverageData(device: device) { data in
+			let end = Date()
+			let start = end.uuAddDays(-1)
+			AwareService.shared.fetchDataFromRange(device: device, start: start, end: end) { dataArray in
+
+			}
+/*			AwareService.shared.fetchLatestAverageData(device: device) { data in
 				//AwairService.shared.fetchCurrentData(device: device) { data in
 
 				self.scoreLabel.text = data.score != -1 ? String(data.score) : "Unavailable"
@@ -78,6 +83,7 @@ class ViewController: UIViewController {
 				self.luxLabel.text = data.lux != -1 ? String(data.lux) : "Unavailable"
 				//self.spl_aLabel.text = String(data.spl_a)
 			}
+ */
 		}
 	}
 }

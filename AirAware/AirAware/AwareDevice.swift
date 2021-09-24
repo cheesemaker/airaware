@@ -33,9 +33,4 @@ public class AwareDevice
 		name = dictionary["name"] as? String ?? ""
 		preference = dictionary["preference"] as? String ?? ""
 	}
-
-	func fetchDataPath() -> String {
-		let path = "https://developer-apis.awair.is/v1/users/self/devices/\(self.deviceType)/\(self.deviceId)/air-data/latest?fahrenheit=\(self.fahrenheit)"
-		return path
-	}
 }

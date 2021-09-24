@@ -27,4 +27,24 @@ public class AwareData {
 		spl_a = dictionary["spl_a"] as? Double ?? -1
 		score = dictionary["score"] as? Int ?? -1
 	}
+
+	static func buildFromServerResponse(_ entry : [String : Any]) -> AwareData {
+
+		var compiledDictionary : [String:Any] = [:]
+
+		if let score = entry["score"] as? Int {
+			compiledDictionary["score"] = score
+		}
+
+		if let sensorArray = entry["sensors"] as? [[String : Any]] {
+			for sensor in sensorArray {
+				let name = sensor["comp"] as? String ?? "Unknown"
+				let value = sensor["value"] as? Double ?? -1
+
+				compiledDictionary[name] = value
+			}
+		}
+
+		return AwareData(compiledDictionary)
+	}
 }
