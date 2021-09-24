@@ -101,7 +101,7 @@ extension AwareService {
 
 	public func fetchDevices(_ completion : @escaping ([AwareDevice])->Void) {
 
-		let request = UUHttpRequest(url: AwareService.devicesPath)
+		let request = UUHttpRequest(url: AwareService.devicesPath())
 		request.headerFields = ["Authorization" : "Bearer \(accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in

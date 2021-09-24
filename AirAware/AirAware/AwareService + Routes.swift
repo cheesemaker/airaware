@@ -9,7 +9,9 @@ import Foundation
 
 extension AwareService {
 
-	static let devicesPath = "https://developer-apis.awair.is/v1/users/self/devices"
+	static func devicesPath() -> String {
+		return "https://developer-apis.awair.is/v1/users/self/devices"
+	}
 
 	static func latestFiveMinuteAveragePath(_ device : AwareDevice) -> String {
 		return "https://developer-apis.awair.is/v1/users/self/devices/\(device.deviceType)/\(device.deviceId)/air-data/5-min-avg"
