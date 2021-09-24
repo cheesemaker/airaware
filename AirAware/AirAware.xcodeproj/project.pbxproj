@@ -65,10 +65,10 @@
 			children = (
 				C5B6AB5026FD4ED700095918 /* AwareData.swift */,
 				C5B6AB5226FD4ED700095918 /* AwareDevice.swift */,
-				C5B6AB5126FD4ED700095918 /* AwareService + Routes.swift */,
 				C5B6AB4E26FD4ED700095918 /* AwareService.swift */,
 				C5B6AB4D26FD4ED700095918 /* AwareService+Authorization.swift */,
 				C5B6AB4F26FD4ED700095918 /* AwareService+Fetch.swift */,
+				C5B6AB5126FD4ED700095918 /* AwareService + Routes.swift */,
 				C5B6AB4426FD4E8300095918 /* AirAware.h */,
 				C5B6AB4526FD4E8300095918 /* AirAware.docc */,
 			);
