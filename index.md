@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+# AirAware
+<img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/icon.png" width=64 height = 64>
 
-You can use the [editor on GitHub](https://github.com/cheesemaker/airaware/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+AirAware is an open source framework for communicating with Awair© devices. It supports both static access token permissions as well as OAuth integrations. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Installation
 
-### Markdown
+### - Swift Package Manager
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+AirAware has native SPM support.
 
-```markdown
-Syntax highlighted code block
+### - Carthage
 
-# Header 1
-## Header 2
-### Header 3
+AirAware may be installed via [Carthage](https://github.com/Carthage/Carthage). To install it, simply add the following line to your `Cartfile`:
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+github "cheesemaker/airaware"
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Then, following the instructions for [integrating Carthage frameworks into your app](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos), link the `UUSwift` framework into your project.
 
-### Jekyll Themes
+## Requirements
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/cheesemaker/airaware/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+This library requires a deployment target of iOS 13.0 or greater or OSX 10.10 or greater.
+AirAware currently supports Swift version 4.0 
 
-### Support or Contact
+## Contributing
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Please **open pull requests against the `develop` branch**
+
+## Swift
+
+AirAware is written entirely in Swift and currently does not support Objective-C interoperability.
+
+## License
+
+AirAware is available under the Apache 2.0 license. See [`LICENSE.md`](https://github.com/cheesemaker/airaware/blob/master/LICENSE.md) for more information.
+
+## Contributors
+
+[A list of contributors is available through GitHub.](https://github.com/cheesemaker/airaware/graphs/contributors)
