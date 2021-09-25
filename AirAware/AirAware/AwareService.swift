@@ -27,7 +27,7 @@ public class AwareService : NSObject {
 		return AwareService.sharedInstance
 	}
 
-	private var savedAccessToken : String {
+	var savedAccessToken : String {
 		if let token = UserDefaults.standard.string(forKey: AwareService.accessTokenStorageKey + "::" + self.clientID) {
 			return token
 		}
@@ -35,7 +35,7 @@ public class AwareService : NSObject {
 		return ""
 	}
 
-	private var savedRefreshToken : String {
+	var savedRefreshToken : String {
 		if let token = UserDefaults.standard.string(forKey: AwareService.refreshTokenStorageKey + "::" + self.clientID) {
 			return token
 		}

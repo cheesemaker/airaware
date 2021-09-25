@@ -34,6 +34,14 @@ extension AwareService {
 
 		_ = UUHttpSession.executeRequest(request, { response in
 
+			// If we need to refresh the auth token, then do that and then re-call this function...
+			if AwareService.needsTokenRefresh(response.httpResponse) {
+				self.refreshAuthToken { complete in
+					self.fetchDataFromRange(device: device, start: start, end: end, completion)
+				}
+				return
+			}
+
 			var returnArray : [AwareData] = []
 
 			if let data = response.parsedResponse as? [String : Any],
@@ -54,7 +62,6 @@ extension AwareService {
 	public func fetchLatestAverageData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
 
 		let path = AwareService.latestFiveMinuteAveragePath(device)
-		// ?from=from&to=to&limit=limit&desc=desc&fahrenheit=fahrenheit
 		let args : UUQueryStringArgs = [
 										 "fahrenheit" : device.fahrenheit,
 										 "limit" : 1
@@ -64,6 +71,14 @@ extension AwareService {
 		request.headerFields = ["Authorization" : "Bearer \(self.accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
+
+			// If we need to refresh the auth token, then do that and then re-call this function...
+			if AwareService.needsTokenRefresh(response.httpResponse) {
+				self.refreshAuthToken { complete in
+					self.fetchLatestAverageData(device: device, completion)
+				}
+				return
+			}
 
 			if let data = response.parsedResponse as? [String : Any],
 			   let dataArray = data["data"] as? [[String : Any]],
@@ -86,6 +101,14 @@ extension AwareService {
 
 		_ = UUHttpSession.executeRequest(request, { response in
 
+			// If we need to refresh the auth token, then do that and then re-call this function...
+			if AwareService.needsTokenRefresh(response.httpResponse) {
+				self.refreshAuthToken { complete in
+					self.fetchCurrentData(device: device, completion)
+				}
+				return
+			}
+
 			if let data = response.parsedResponse as? [String : Any],
 			   let dataArray = data["data"] as? [[String : Any]],
 			   let entry = dataArray.last {
@@ -105,6 +128,14 @@ extension AwareService {
 		request.headerFields = ["Authorization" : "Bearer \(accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
+
+			// If we need to refresh the auth token, then do that and then re-call this function...
+			if AwareService.needsTokenRefresh(response.httpResponse) {
+				self.refreshAuthToken { complete in
+					self.fetchDevices(completion)
+				}
+				return
+			}
 
 			var devices : [AwareDevice] = []
 			if let deviceDictionary = response.parsedResponse as? [String:Any],

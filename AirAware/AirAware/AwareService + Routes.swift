@@ -33,4 +33,6 @@ extension AwareService {
 		return "https://developer-apis.awair.is/v1/devices/\(device.deviceType)/\(device.deviceId)/power-status"
 	}
 
+	static let tokenExchangePath = "https://oauth2.awair.is/v2/token"
+	static let loginPath = "https://oauth-login.awair.is"
 }

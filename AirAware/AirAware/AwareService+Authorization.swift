@@ -19,7 +19,7 @@ extension AwareService : WKNavigationDelegate {
 
 		self.loginCompletion = completion
 
-		let path = "https://oauth-login.awair.is?state=12345678&response_type=code&client_id=\(self.clientID)&redirect_uri=\(self.redirectURL)"
+		let path = AwareService.loginPath + "?state=12345678&response_type=code&client_id=\(self.clientID)&redirect_uri=\(self.redirectURL)"
 		let webView = WKWebView()
 		webView.translatesAutoresizingMaskIntoConstraints = false
 		viewController.view.addSubview(webView)
@@ -48,10 +48,45 @@ extension AwareService : WKNavigationDelegate {
 		decisionHandler(.allow)
 	}
 
-	private func exchangeAuthCode(_ code : String, _ completion: @escaping (Bool)->Void) {
+	static func needsTokenRefresh(_ response : HTTPURLResponse?) -> Bool {
+		if let response = response {
+			return response.statusCode >= 403
+		}
 
-		let bodyString = "grant_type=authorization_code&code=\(code)&client_id=\(self.clientID)&client_secret=\(self.clientSecret)&redirect_uri=\(self.redirectURL)"
-		let request = UUHttpRequest(url: "https://oauth2.awair.is/v2/token")
+		return false
+	}
+
+	func refreshAuthToken(_ completion: @escaping(Bool)->Void) {
+
+		let code = savedRefreshToken
+		let bodyString = "grant_type=refresh_token&refresh_token=\(code)&client_id=\(self.clientID)&client_secret=\(self.clientSecret)"
+		let request = UUHttpRequest(url: AwareService.tokenExchangePath)
+		request.httpMethod = .post
+		request.bodyContentType = "application/x-www-form-urlencoded"
+		request.body = bodyString.data(using: .utf8)
+
+		_ = UUHttpSession.executeRequest(request) { response in
+
+			var success = false
+			if let dictionary = response.parsedResponse as? [String : Any] {
+				if let accessToken = dictionary["access_token"] as? String,
+				   let refreshToken = dictionary["refresh_token"] as? String {
+					self.accessToken = accessToken
+					self.saveTokens(accessToken: accessToken, refreshToken: refreshToken)
+
+					success = true
+				}
+			}
+
+			completion(success)
+		}
+
+	}
+
+	func exchangeAuthCode(_ code : String, _ completion: @escaping (Bool)->Void) {
+
+		let bodyString = "grant_type=authorization_code&code=\(code)&client_id=\(self.clientID)&client_secret=\(self.clientSecret)"
+		let request = UUHttpRequest(url: AwareService.tokenExchangePath)
 		request.httpMethod = .post
 		request.bodyContentType = "application/x-www-form-urlencoded"
 		request.body = bodyString.data(using: .utf8)

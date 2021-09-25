@@ -41,6 +41,15 @@ public class AwareDevice
 		request.headerFields = ["Authorization" : "Bearer \(AwareService.shared.accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
+
+			// If we need to refresh the auth token, then do that and then re-call this function...
+			if AwareService.needsTokenRefresh(response.httpResponse) {
+				AwareService.shared.refreshAuthToken { complete in
+					self.fetchDisplayMode(completion)
+				}
+				return
+			}
+
 			if let dictionary = response.parsedResponse as? [String : Any],
 			   let mode = dictionary["mode"] as? String
 			{
@@ -57,6 +66,14 @@ public class AwareDevice
 		request.headerFields = ["Authorization" : "Bearer \(AwareService.shared.accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
+
+			// If we need to refresh the auth token, then do that and then re-call this function...
+			if AwareService.needsTokenRefresh(response.httpResponse) {
+				AwareService.shared.refreshAuthToken { complete in
+					self.fetchPowerStatus(completion)
+				}
+				return
+			}
 
 			var percentageReading : Double? = nil
 			var pluggedStatus : Bool? = nil
