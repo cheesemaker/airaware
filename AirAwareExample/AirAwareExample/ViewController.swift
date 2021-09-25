@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
 	private let clientID = "12d1f95f0f4a4228b58c1936484ee1b2"
 	private let clientSecret = "3d28a325142f47a1a2e750a9a213dd15"
-	private let redirectURL = "http://homemonitor.spsw.io"
+	private let redirectURL = "http://airaware.dev"
 
 
 	override func viewDidLoad() {
