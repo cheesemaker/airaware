@@ -13,9 +13,13 @@
 		C5B6AB5426FD4ED700095918 /* AwareService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB4E26FD4ED700095918 /* AwareService.swift */; };
 		C5B6AB5526FD4ED700095918 /* AwareService+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB4F26FD4ED700095918 /* AwareService+Fetch.swift */; };
 		C5B6AB5626FD4ED700095918 /* AwareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB5026FD4ED700095918 /* AwareData.swift */; };
-		C5B6AB5726FD4ED700095918 /* AwareService + Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB5126FD4ED700095918 /* AwareService + Routes.swift */; };
+		C5B6AB5726FD4ED700095918 /* AwareService+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB5126FD4ED700095918 /* AwareService+Routes.swift */; };
 		C5B6AB5826FD4ED700095918 /* AwareDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB5226FD4ED700095918 /* AwareDevice.swift */; };
 		C5B6AB5D26FD514B00095918 /* UUSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C5B6AB5C26FD514B00095918 /* UUSwiftNetworking */; };
+		C5F04AE22703E24F007C49BA /* AirNowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE12703E24F007C49BA /* AirNowService.swift */; };
+		C5F04AE4270416F0007C49BA /* AirNowService+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */; };
+		C5F04AE62704173E007C49BA /* AirNowService+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */; };
+		C5F04AE8270434F2007C49BA /* AirNowService+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE7270434F2007C49BA /* AirNowService+Fetch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +30,13 @@
 		C5B6AB4E26FD4ED700095918 /* AwareService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwareService.swift; sourceTree = "<group>"; };
 		C5B6AB4F26FD4ED700095918 /* AwareService+Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AwareService+Fetch.swift"; sourceTree = "<group>"; };
 		C5B6AB5026FD4ED700095918 /* AwareData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwareData.swift; sourceTree = "<group>"; };
-		C5B6AB5126FD4ED700095918 /* AwareService + Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AwareService + Routes.swift"; sourceTree = "<group>"; };
+		C5B6AB5126FD4ED700095918 /* AwareService+Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AwareService+Routes.swift"; sourceTree = "<group>"; };
 		C5B6AB5226FD4ED700095918 /* AwareDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwareDevice.swift; sourceTree = "<group>"; };
 		C5B6AB5926FD4EE000095918 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		C5F04AE12703E24F007C49BA /* AirNowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirNowService.swift; sourceTree = "<group>"; };
+		C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Authorization.swift"; sourceTree = "<group>"; };
+		C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Routes.swift"; sourceTree = "<group>"; };
+		C5F04AE7270434F2007C49BA /* AirNowService+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Fetch.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +71,16 @@
 		C5B6AB4326FD4E8300095918 /* AirAware */ = {
 			isa = PBXGroup;
 			children = (
+				C5F04AE12703E24F007C49BA /* AirNowService.swift */,
+				C5F04AE7270434F2007C49BA /* AirNowService+Fetch.swift */,
+				C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */,
+				C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */,
 				C5B6AB5026FD4ED700095918 /* AwareData.swift */,
 				C5B6AB5226FD4ED700095918 /* AwareDevice.swift */,
 				C5B6AB4E26FD4ED700095918 /* AwareService.swift */,
 				C5B6AB4D26FD4ED700095918 /* AwareService+Authorization.swift */,
 				C5B6AB4F26FD4ED700095918 /* AwareService+Fetch.swift */,
-				C5B6AB5126FD4ED700095918 /* AwareService + Routes.swift */,
+				C5B6AB5126FD4ED700095918 /* AwareService+Routes.swift */,
 				C5B6AB4426FD4E8300095918 /* AirAware.h */,
 				C5B6AB4526FD4E8300095918 /* AirAware.docc */,
 			);
@@ -160,13 +172,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F04AE8270434F2007C49BA /* AirNowService+Fetch.swift in Sources */,
 				C5B6AB5626FD4ED700095918 /* AwareData.swift in Sources */,
+				C5F04AE62704173E007C49BA /* AirNowService+Routes.swift in Sources */,
 				C5B6AB5326FD4ED700095918 /* AwareService+Authorization.swift in Sources */,
-				C5B6AB5726FD4ED700095918 /* AwareService + Routes.swift in Sources */,
+				C5F04AE4270416F0007C49BA /* AirNowService+Authorization.swift in Sources */,
+				C5B6AB5726FD4ED700095918 /* AwareService+Routes.swift in Sources */,
 				C5B6AB5526FD4ED700095918 /* AwareService+Fetch.swift in Sources */,
 				C5B6AB5826FD4ED700095918 /* AwareDevice.swift in Sources */,
 				C5B6AB5426FD4ED700095918 /* AwareService.swift in Sources */,
 				C5B6AB4626FD4E8300095918 /* AirAware.docc in Sources */,
+				C5F04AE22703E24F007C49BA /* AirNowService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
