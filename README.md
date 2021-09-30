@@ -10,7 +10,7 @@ It supports both static access token permissions as well as OAuth integrations f
 For the AirNow service, it supports both an embedded web login as well as native username/password support. An active user account is required for each user, however retrieval of the access key has been automated.
 
 
-<img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpg">
+<img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpeg">
 
 ## Installation
 
