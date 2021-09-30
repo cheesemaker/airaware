@@ -1,7 +1,16 @@
 # AirAware
 <img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/icon.png" width=64 height = 64>
 
-AirAware is an open source framework for communicating with Awair© devices. It supports both static access token permissions as well as OAuth integrations. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
+AirAware is an open source framework to help developers monitor and understand the air quality around them. Currently, AirAware supports:
+- Awair© smart devices for monitoring indoor air quality
+- AirNow - the EPA supported AQI (Air Quality Indicator) service
+
+It supports both static access token permissions as well as OAuth integrations for Awair© devices. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
+
+For the AirNow service, it supports both an embedded web login as well as native username/password support. An active user account is required for each user, however retrieval of the access key has been automated.
+
+
+<img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpg">
 
 ## Installation
 
