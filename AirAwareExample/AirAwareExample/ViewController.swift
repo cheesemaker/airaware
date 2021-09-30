@@ -15,11 +15,13 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.styleViews()
-
 		// Setup the service!
 		AwareService.setup(clientID: clientID, clientSecret: clientSecret, redirectURL: redirectURL)
+
+		// Style the views so we look good...
+		self.styleViews()
 	}
+
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -56,6 +58,7 @@ class ViewController: UIViewController {
 		self.airNowPasswordField.textContentType = .password
 	}
 
+
 	@IBAction func onAwareLogin() {
 		AwareService.shared.promptForUserLogin(viewController: self) { complete in
 			if complete {
@@ -81,20 +84,22 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func refreshAwareDevice() {
-		AwareService.shared.fetchDevices { devices in
 
+		AwareService.shared.fetchDevices { devices in
 			self.devices = devices
-			self.refreshDevice()
+			self.refreshCurrentDevice()
 		}
 	}
 
 	@IBAction func refreshAirNow() {
+
 		self.locationManager.delegate = self
 		self.locationManager.requestWhenInUseAuthorization()
 		self.locationManager.startUpdatingLocation()
 	}
 
-	func refreshDevice() {
+
+	func refreshCurrentDevice() {
 
 		if let device = self.devices.first {
 
@@ -115,8 +120,9 @@ class ViewController: UIViewController {
 				}
 			}
 
+
+			//AwairService.shared.fetchCurrentData(device: device) { data in
 			AwareService.shared.fetchLatestAverageData(device: device) { data in
-				//AwairService.shared.fetchCurrentData(device: device) { data in
 
 				self.scoreLabel.text = data.intString(data.score)
 				self.temperatureLabel.text = data.string(data.temperature)
@@ -126,11 +132,14 @@ class ViewController: UIViewController {
 				self.pm25Label.text = data.string(data.pm25)
 				self.deviceNameLabel.text = device.name
 			}
-
 		}
 	}
 
+	// Awair login views...
+	@IBOutlet var awareDeviceView : UIView!
+	@IBOutlet var awareDeviceLoginView : UIView!
 
+	// Awair data display objects/labels...
 	@IBOutlet var scoreLabel : UILabel!
 	@IBOutlet var temperatureLabel : UILabel!
 	@IBOutlet var humidityLabel : UILabel!
@@ -141,24 +150,28 @@ class ViewController: UIViewController {
 	@IBOutlet var mode : UILabel!
 	@IBOutlet var pluggedStatus : UILabel!
 	@IBOutlet var batteryStatus : UILabel!
-	@IBOutlet var aqiLabel : UILabel!
 	@IBOutlet var deviceNameLabel : UILabel!
 
-	@IBOutlet var awareDeviceView : UIView!
-	@IBOutlet var airNowView : UIView!
-	@IBOutlet var awareDeviceLoginView : UIView!
-	@IBOutlet var airNowLoginView : UIView!
 
+	// AirNow login views...
+	@IBOutlet var airNowLoginView : UIView!
+	@IBOutlet var airNowView : UIView!
 	@IBOutlet var airNowUserNameField : UITextField!
 	@IBOutlet var airNowPasswordField : UITextField!
 
+	// AirNow display objects...
+	@IBOutlet var aqiLabel : UILabel!
+
+
+	// A few helper functions to manage state+location
 	let locationManager = CLLocationManager()
 	var devices : [AwareDevice] = []
 
+
+	// These are the AirAware keys. You can/should replace with your own...
 	private let clientID = "12d1f95f0f4a4228b58c1936484ee1b2"
 	private let clientSecret = "3d28a325142f47a1a2e750a9a213dd15"
 	private let redirectURL = "http://airaware.dev"
-
 }
 
 
@@ -169,6 +182,7 @@ extension ViewController : UITextFieldDelegate {
 		return false
 	}
 }
+
 
 extension ViewController : CLLocationManagerDelegate {
 
@@ -191,4 +205,30 @@ extension ViewController : CLLocationManagerDelegate {
 	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
 		manager.startUpdatingLocation()
 	}
+}
+
+
+// Helper functions to format the strings appropriately for display in the sample app...
+extension AwareData {
+
+	public func intString(_ value : Any?) -> String {
+		if let value = value as? Int {
+			return String(value)
+		}
+		else if let value = value as? Double {
+			let intValue = Int(value)
+			return String(intValue)
+		}
+		else {
+			return "---"
+		}
+	}
+
+	public func string(_ double : Double?) -> String {
+		if let double = double {
+			return String(format: "%0.2f", double)
+		}
+		return "---"
+	}
+
 }

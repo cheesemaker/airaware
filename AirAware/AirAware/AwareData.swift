@@ -37,26 +37,6 @@ public class AwareData {
 		}
 	}
 
-	public func intString(_ value : Any?) -> String {
-		if let value = value as? Int {
-			return String(value)
-		}
-		else if let value = value as? Double {
-			let intValue = Int(value)
-			return String(intValue)
-		}
-		else {
-			return "---"
-		}
-	}
-
-	public func string(_ double : Double?) -> String {
-		if let double = double {
-			return String(format: "%0.2f", double)
-		}
-		return "---"
-	}
-
 	static func buildFromServerResponse(_ entry : [String : Any]) -> AwareData {
 
 		var compiledDictionary : [String:Any] = [:]
