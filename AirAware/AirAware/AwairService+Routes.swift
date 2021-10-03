@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension AwareService {
+extension AwairService {
 
 	static func devicesPath() -> String {
 		return "https://developer-apis.awair.is/v1/users/self/devices"

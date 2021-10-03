@@ -8,7 +8,7 @@
 import Foundation
 import UUSwiftNetworking
 
-extension AwareService {
+extension AwairService {
 
 	public func fetchDataFromRange(device : AwareDevice, start : Date, end : Date, _ completion : @escaping([AwareData])->Void) {
 
@@ -22,7 +22,7 @@ extension AwareService {
 			startString = swap
 		}
 
-		let path = AwareService.rawDataPath(device)
+		let path = AwairService.rawDataPath(device)
 		let args : UUQueryStringArgs = [
 										 "fahrenheit" : device.fahrenheit,
 										 "from" : startString,
@@ -35,7 +35,7 @@ extension AwareService {
 		_ = UUHttpSession.executeRequest(request, { response in
 
 			// If we need to refresh the auth token, then do that and then re-call this function...
-			if AwareService.needsTokenRefresh(response.httpResponse) {
+			if AwairService.needsTokenRefresh(response.httpResponse) {
 				self.refreshAuthToken { complete in
 					self.fetchDataFromRange(device: device, start: start, end: end, completion)
 				}
@@ -61,7 +61,7 @@ extension AwareService {
 
 	public func fetchLatestAverageData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
 
-		let path = AwareService.latestFiveMinuteAveragePath(device)
+		let path = AwairService.latestFiveMinuteAveragePath(device)
 		let args : UUQueryStringArgs = [
 										 "fahrenheit" : device.fahrenheit,
 										 "limit" : 1
@@ -73,7 +73,7 @@ extension AwareService {
 		_ = UUHttpSession.executeRequest(request, { response in
 
 			// If we need to refresh the auth token, then do that and then re-call this function...
-			if AwareService.needsTokenRefresh(response.httpResponse) {
+			if AwairService.needsTokenRefresh(response.httpResponse) {
 				self.refreshAuthToken { complete in
 					self.fetchLatestAverageData(device: device, completion)
 				}
@@ -96,13 +96,13 @@ extension AwareService {
 
 	public func fetchCurrentData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
 
-		let request = UUHttpRequest(url: AwareService.latestDataPath(device))
+		let request = UUHttpRequest(url: AwairService.latestDataPath(device))
 		request.headerFields = ["Authorization" : "Bearer \(self.accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
 
 			// If we need to refresh the auth token, then do that and then re-call this function...
-			if AwareService.needsTokenRefresh(response.httpResponse) {
+			if AwairService.needsTokenRefresh(response.httpResponse) {
 				self.refreshAuthToken { complete in
 					self.fetchCurrentData(device: device, completion)
 				}
@@ -124,13 +124,13 @@ extension AwareService {
 
 	public func fetchDevices(_ completion : @escaping ([AwareDevice])->Void) {
 
-		let request = UUHttpRequest(url: AwareService.devicesPath())
+		let request = UUHttpRequest(url: AwairService.devicesPath())
 		request.headerFields = ["Authorization" : "Bearer \(accessToken)"]
 
 		_ = UUHttpSession.executeRequest(request, { response in
 
 			// If we need to refresh the auth token, then do that and then re-call this function...
-			if AwareService.needsTokenRefresh(response.httpResponse) {
+			if AwairService.needsTokenRefresh(response.httpResponse) {
 				self.refreshAuthToken { complete in
 					self.fetchDevices(completion)
 				}
