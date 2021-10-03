@@ -20,6 +20,7 @@ public class AwareDataView: UIView {
 		self.addSubview(titleLabel)
 		titleLabel.text = title
 		titleLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+		titleLabel.textColor = .white
 		titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8.0).isActive = true
 		titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -101,6 +102,8 @@ public class AwareDataView: UIView {
 		valueLabel.text = value
 		nameLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
 		valueLabel.font = UIFont.systemFont(ofSize: 14.0)
+		nameLabel.textColor = .white
+		valueLabel.textColor = .white
 		return stackview
 	}
 

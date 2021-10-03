@@ -37,6 +37,8 @@
 		C50A0BC92708188D00E06DB4 /* AwairService+Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AwairService+Device.swift"; sourceTree = "<group>"; };
 		C50A0BCB2708E18400E06DB4 /* AwareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwareService.swift; sourceTree = "<group>"; };
 		C50A0BCD270A1E2C00E06DB4 /* AwareDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwareDataView.swift; sourceTree = "<group>"; };
+		C50A0BCF270A31B000E06DB4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		C50A0BD0270A31B000E06DB4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C5B6AB4126FD4E8300095918 /* AirAware.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AirAware.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B6AB4426FD4E8300095918 /* AirAware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirAware.h; sourceTree = "<group>"; };
 		C5B6AB4526FD4E8300095918 /* AirAware.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AirAware.docc; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		C5B6AB3726FD4E8300095918 = {
 			isa = PBXGroup;
 			children = (
+				C50A0BCF270A31B000E06DB4 /* LICENSE */,
+				C50A0BD0270A31B000E06DB4 /* README.md */,
 				C5B6AB5926FD4EE000095918 /* Package.swift */,
 				C5B6AB4326FD4E8300095918 /* AirAware */,
 				C5B6AB4226FD4E8300095918 /* Products */,
