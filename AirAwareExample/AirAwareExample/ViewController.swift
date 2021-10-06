@@ -25,6 +25,10 @@ private let awairRedirectURL = "http://airaware.dev"
 
 class ViewController: UIViewController {
 
+	let airNowLoginButton = UIButton()
+	let awairLoginButton = UIButton()
+	let weatherFlowLoginButton = UIButton()
+	let purpleAirLoginButton = UIButton()
 	let stackView = UIStackView()
 
 	// A few helper functions to manage state+location
@@ -33,11 +37,14 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		PurpleAirService.setup(accessToken: purpleReadKey)
-		WeatherFlowService.setup(clientID: weatherFlowClientID, clientSecret: weatherFlowSecret, redirectURL: weatherFlowRedirectURL)
-		AwairService.setup(clientID: awairClientID, clientSecret: awairClientSecret, redirectURL: awairRedirectURL)
+		self.setupStackView()
+		self.setupAirNowService()
+		self.setupAwairService()
+		self.setupWeatherFlowService()
+		self.setupPurpleAirService()
+	}
 
-		
+	func setupStackView() {
 		self.view.addSubview(self.stackView)
 		self.stackView.translatesAutoresizingMaskIntoConstraints = false
 		self.stackView.axis = .vertical
@@ -48,43 +55,59 @@ class ViewController: UIViewController {
 		self.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20.0).isActive = true
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
 
-		if WeatherFlowService.shared.needsLogin() {
-			WeatherFlowService.shared.promptForUserLogin(viewController: self) { complete in
-				self.updateWeatherFlow()
-			}
-		}
-		else {
-			self.updateWeatherFlow()
-		}
+	// ///////////////////////////////////////////////////////////////////////////////////////////////
+	// MARK: -
+	// MARK: Awair
 
+	func setupAwairService() {
+		AwairService.setup(clientID: awairClientID, clientSecret: awairClientSecret, redirectURL: awairRedirectURL)
+		self.awairLoginButton.addTarget(self, action: #selector(onAwairLogin), for: .touchUpInside)
+		self.awairLoginButton.setTitle("Awair Login", for: .normal)
 		if AwairService.shared.needsLogin() {
-			AwairService.shared.promptForUserLogin(viewController: self) { complete in
-				if complete {
-					self.updateAwairDevice()
-				}
-			}
+			self.stackView.addArrangedSubview(self.awairLoginButton)
 		}
 		else {
 			self.updateAwairDevice()
 		}
-
-
-		self.locationManager.delegate = self
-		self.locationManager.requestWhenInUseAuthorization()
 	}
 
 	func updateAwairDevice() {
 		AwairService.shared.fetchAllDevices { devices in
 			if let device = devices.first {
-				AwairService.shared.fetchLatestAverageData(device: device) { data in
+				AwairService.shared.fetchLatestData(device: device) { data in
 					let view = AwareDataView(title: device.name, data)
 					self.stackView.addArrangedSubview(view)
 				}
 			}
+		}
+	}
+
+	@objc func onAwairLogin() {
+		AwairService.shared.promptForUserLogin(viewController: self) { complete in
+			if complete {
+				self.awairLoginButton.removeFromSuperview()
+				self.updateAwairDevice()
+			}
+		}
+	}
+
+
+	// ///////////////////////////////////////////////////////////////////////////////////////////////
+	// MARK: -
+	// MARK: WeatherFlow
+
+	func setupWeatherFlowService() {
+
+		WeatherFlowService.setup(clientID: weatherFlowClientID, clientSecret: weatherFlowSecret, redirectURL: weatherFlowRedirectURL)
+
+		self.weatherFlowLoginButton.addTarget(self, action: #selector(onWeatherFlowLogin), for: .touchUpInside)
+		self.weatherFlowLoginButton.setTitle("WeatherFlow Login", for: .normal)
+		if WeatherFlowService.shared.needsLogin() {
+			self.stackView.addArrangedSubview(self.weatherFlowLoginButton)
+		}
+		else {
+			self.updateWeatherFlow()
 		}
 	}
 
@@ -100,19 +123,76 @@ class ViewController: UIViewController {
 		}
 	}
 
-}
+	@objc func onWeatherFlowLogin() {
+		WeatherFlowService.shared.promptForUserLogin(viewController: self) { complete in
+
+			if complete {
+				self.weatherFlowLoginButton.removeFromSuperview()
+				self.updateWeatherFlow()
+			}
+		}
+	}
 
 
 
-extension ViewController : CLLocationManagerDelegate {
+	// ///////////////////////////////////////////////////////////////////////////////////////////////
+	// MARK: -
+	// MARK: AirNow
 
-	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+	func setupAirNowService() {
 
-		if let location = locations.first {
+		self.airNowLoginButton.addTarget(self, action: #selector(onAirNowLogin), for: .touchUpInside)
+		self.airNowLoginButton.setTitle("AirNow Login", for: .normal)
+		if AirNowService.shared.needsLogin() {
+			self.stackView.addArrangedSubview(self.airNowLoginButton)
+		}
+		else {
+			self.updateAirNowService()
+		}
+	}
 
-			manager.stopUpdatingLocation()
-			manager.delegate = nil
+	func updateAirNowService() {
+		AirNowService.shared.fetchAllDevices { devices in
+			if let device = devices.first {
+				AirNowService.shared.fetchLatestData(device: device) { data in
+					let view = AwareDataView(title: "AirNow", data)
+					self.stackView.addArrangedSubview(view)
+				}
+			}
+		}
+	}
 
+	@objc func onAirNowLogin() {
+		AirNowService.shared.promptForUserLogin(viewController: self) { complete in
+			if complete{
+				self.airNowLoginButton.removeFromSuperview()
+				self.updateAirNowService()
+			}
+		}
+	}
+
+
+
+	// ///////////////////////////////////////////////////////////////////////////////////////////////
+	// MARK: -
+	// MARK: PurpleAir
+
+	func setupPurpleAirService() {
+		PurpleAirService.setup(accessToken: purpleReadKey)
+		self.purpleAirLoginButton.setTitle("PurpleAir Login", for: .normal)
+		self.purpleAirLoginButton.addTarget(self, action: #selector(onPurpleAirLogin), for: .touchUpInside)
+
+		if self.locationManager.location != nil {
+			self.updatePurpleAirService()
+		}
+		else {
+			self.stackView.addArrangedSubview(self.purpleAirLoginButton)
+		}
+	}
+
+	func updatePurpleAirService() {
+
+		if let location = self.locationManager.location {
 			PurpleAirService.shared.findClosestDevice(location: location.coordinate) { device in
 				PurpleAirService.shared.fetchLatestData(device: device) { data in
 
@@ -120,22 +200,37 @@ extension ViewController : CLLocationManagerDelegate {
 					self.stackView.addArrangedSubview(view)
 				}
 			}
-
-			AirNowService.setup(location: location.coordinate)
-			AirNowService.shared.fetchLatestData(location: location.coordinate) { data in
-				let view = AwareDataView(title: "AirNow", data)
-				self.stackView.addArrangedSubview(view)
-			}
 		}
+	}
+
+	@objc func onPurpleAirLogin() {
+		self.locationManager.delegate = self
+		self.locationManager.requestWhenInUseAuthorization()
+		self.purpleAirLoginButton.removeFromSuperview()
+	}
+
+}
+
+
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////
+// MARK: -
+// MARK: CLLocationManagerDelegate
+
+extension ViewController : CLLocationManagerDelegate {
+
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+		manager.stopUpdatingLocation()
+		manager.delegate = nil
+
+		self.updatePurpleAirService()
 	}
 
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		manager.startUpdatingLocation()
 	}
 
-	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-		manager.startUpdatingLocation()
-	}
 }
 
 

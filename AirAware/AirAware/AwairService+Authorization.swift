@@ -36,6 +36,7 @@ extension AwairService : WKNavigationDelegate {
 		if let url = navigationAction.request.url,
 		   let queryParameters = url.queryParameters,
 		   let code = queryParameters["code"] {
+
 			self.exchangeAuthCode(code) { success in
 				if let completion = self.loginCompletion {
 					DispatchQueue.main.async {
@@ -44,6 +45,9 @@ extension AwairService : WKNavigationDelegate {
 					}
 				}
 			}
+
+			decisionHandler(.cancel)
+			return
 		}
 		decisionHandler(.allow)
 	}

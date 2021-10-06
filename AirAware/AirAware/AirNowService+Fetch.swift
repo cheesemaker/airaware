@@ -35,7 +35,16 @@ extension AirNowService : AwareService {
 			fetchLatestData(location: location, completion)
 		}
 		else if let zipcode = self.zipcode {
-			fetchLatest(zipcode, completion)
+			fetchLatestData(zipcode, completion)
+		}
+		else if let location = AirNowService.locationManager.location {
+			fetchLatestData(location: location.coordinate, completion)
+		}
+		else {
+			self.fetchLatestCompletion = completion
+			AirNowService.locationManager.delegate = self
+			AirNowService.locationManager.requestWhenInUseAuthorization()
+			AirNowService.locationManager.startUpdatingLocation()
 		}
 	}
 
@@ -81,7 +90,7 @@ extension AirNowService : AwareService {
 		}
 	}
 
-	public func fetchLatest(_ zipcode : String,  _ completion : @escaping(AwareData)->Void) {
+	public func fetchLatestData(_ zipcode : String,  _ completion : @escaping(AwareData)->Void) {
 
 		let path = AirNowService.latestByZipcodePath + "?format=application/json&zipCode=\(zipcode)&distance=25&API_KEY=\(self.accessToken)"
 		UUHttpSession.get(url: path) { response in
@@ -103,4 +112,21 @@ extension AirNowService : AwareService {
 
 }
 
+
+extension AirNowService : CLLocationManagerDelegate {
+
+	public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+		if let location = locations.first {
+
+			manager.stopUpdatingLocation()
+			manager.delegate = nil
+			self.location = location.coordinate
+			if let completion = self.fetchLatestCompletion {
+				self.fetchLatestData(location: location.coordinate, completion)
+			}
+		}
+	}
+
+}
 
