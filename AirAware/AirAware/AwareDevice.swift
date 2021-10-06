@@ -12,9 +12,9 @@ public class AwareDevice
 {
 	public let deviceId : Int
 	public let deviceType : String
-	public let latitude : String
+	public let latitude : Double
 	public let locationName : String
-	public let longitude : String
+	public let longitude : Double
 	public let name : String
 	public let preference : String
 
@@ -22,13 +22,48 @@ public class AwareDevice
 
 	init(_ dictionary : [String: Any])
 	{
-		deviceId = dictionary["deviceId"] as? Int ?? -1
-		deviceType = dictionary["deviceType"] as? String ?? ""
-		latitude = dictionary["latitude"] as? String ?? ""
-		longitude = dictionary["longitude"] as? String ?? ""
-		locationName = dictionary["locationName"] as? String ?? ""
-		name = dictionary["name"] as? String ?? ""
-		preference = dictionary["preference"] as? String ?? ""
+		deviceId = AwareDevice.fetchInt(dictionary["deviceId"])
+		deviceType = AwareDevice.fetchString(dictionary["deviceType"])
+		locationName = AwareDevice.fetchString(dictionary["locationName"])
+		name = AwareDevice.fetchString(dictionary["name"])
+		preference = AwareDevice.fetchString(dictionary["preference"])
+		latitude = AwareDevice.fetchDouble(dictionary["latitude"])
+		longitude = AwareDevice.fetchDouble(dictionary["longitude"])
+	}
+
+	private static func fetchDouble(_ value : Any?) -> Double {
+		if let doubleValue = value as? Double {
+			return doubleValue
+		}
+		else if let doubleString = value as? String,
+				let doubleValue = Double(doubleString) {
+			return doubleValue
+		}
+		else {
+			return 0.0
+		}
+	}
+
+	private static func fetchInt(_ value : Any?) -> Int {
+		if let intValue = value as? Int {
+			return intValue
+		}
+		else if let intString = value as? String,
+				let intValue = Int(intString) {
+			return intValue
+		}
+		else {
+			return -1
+		}
+	}
+
+	private static func fetchString(_ value : Any?) -> String {
+		if let str = value as? String {
+			return str
+		}
+		else {
+			return ""
+		}
 	}
 
 }

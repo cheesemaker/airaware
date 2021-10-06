@@ -54,8 +54,21 @@ public class AwareDataView: UIView {
 			self.stackView.addArrangedSubview(self.createLabel(name: "VOC:", value: data.string(value)))
 		}
 
+		if let value = data.ozone {
+			self.stackView.addArrangedSubview(self.createLabel(name: "Ozone:", value: data.string(value)))
+		}
+
+
+		if let value = data.pm1 {
+			self.stackView.addArrangedSubview(self.createLabel(name: "PM 1.0:", value: data.string(value)))
+		}
+
 		if let value = data.pm25 {
-			self.stackView.addArrangedSubview(self.createLabel(name: "PM25:", value: data.string(value)))
+			self.stackView.addArrangedSubview(self.createLabel(name: "PM 2.5:", value: data.string(value)))
+		}
+
+		if let value = data.pm10 {
+			self.stackView.addArrangedSubview(self.createLabel(name: "PM 10:", value: data.string(value)))
 		}
 
 		if let value = data.lux {

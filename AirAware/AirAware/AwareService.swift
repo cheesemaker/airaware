@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol AwareService {
 
 	func needsLogin() -> Bool
-	func fetchDevices(_ completion : @escaping([AwareDevice])->Void)
+	func fetchAllDevices(_ completion : @escaping([AwareDevice])->Void)
+	func findClosestDevice(location : CLLocationCoordinate2D, _ completion : @escaping(AwareDevice)->Void)
 	func fetchLatestData(device : AwareDevice, _ completion : @escaping(AwareData)->Void)
 
 }
