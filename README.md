@@ -5,12 +5,18 @@ AirAware is an open source framework to help developers monitor and understand t
 - Awair© smart devices for monitoring indoor air quality
 - AirNow - the EPA supported AQI (Air Quality Indicator) service
 - WeatherFlow - Outdoor weather station readings when configured to use a WF base-station
+- PurpleAir - Network of weather stations maintained and owned by private citizens
 
-For Awair© devices, the library supports both OAuth and direct access token integrations. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
 
-For WeatherFlow© devices, it supports OAuth.
+## Accounts and API Keys:
+- For Awair© devices, the library supports both OAuth and direct access token integrations. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
 
-For the AirNow service, it supports both an embedded web login as well as native username/password support. An active user account is required for each user, however retrieval of the access key has been automated.
+- For WeatherFlow© devices, it supports OAuth.
+
+- For the AirNow service, it supports both an embedded web login as well as native username/password support. An active user account is required for each user, however retrieval of the access key has been automated.
+
+- For the PurpleAir service, no login is required, however an API key must be requested and obtained from Purple
+
 
 <img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpeg">
 
