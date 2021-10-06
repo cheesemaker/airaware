@@ -206,6 +206,7 @@ class ViewController: UIViewController {
 	@objc func onPurpleAirLogin() {
 		self.locationManager.delegate = self
 		self.locationManager.requestWhenInUseAuthorization()
+		self.locationManager.startUpdatingLocation()
 		self.purpleAirLoginButton.removeFromSuperview()
 	}
 
