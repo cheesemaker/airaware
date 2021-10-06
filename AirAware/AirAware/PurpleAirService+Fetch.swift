@@ -9,13 +9,13 @@ import Foundation
 import CoreLocation
 import UUSwiftNetworking
 
-extension PurpleAirService {
+extension PurpleAirService : AwareService {
 
 	func needsLogin() -> Bool {
 		return false
 	}
 
-	public func fetchDevices(_ completion : @escaping([AwareDevice])->Void) {
+	public func fetchAllDevices(_ completion : @escaping([AwareDevice])->Void) {
 
 		let path = PurpleAirService.deviceListPath()
 
@@ -56,7 +56,7 @@ extension PurpleAirService {
 	
 	public func findClosestDevice(location : CLLocationCoordinate2D, _ completion : @escaping(AwareDevice)->Void) {
 
-		self.fetchDevices { devices in
+		self.fetchAllDevices { devices in
 
 			let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
 			var closestDistance : Double = 10000000.0
@@ -86,6 +86,8 @@ extension PurpleAirService {
 			if let dictionary = response.parsedResponse as? [String : Any] {
 				if let sensorDictionary = dictionary["sensor"] as? [String : Any] {
 
+					var composedDictionary : [String : Any] = [:]
+
 					let humidity = sensorDictionary["humidity"]
 					let temperature = sensorDictionary["temperature"]
 					let voc = sensorDictionary["voc"]
@@ -95,7 +97,13 @@ extension PurpleAirService {
 					let pm10 = sensorDictionary["pm10"]
 					let pm1 = sensorDictionary["pm1.0"]
 
-					var composedDictionary : [String : Any] = [:]
+					// Since PurpleAir provides the pm2.5 as an average value, we can use that to calculate the EPA AQI score
+					if let stats = sensorDictionary["stats"] as? [String : Any],
+					   let dataAverage = stats["pm2.5_10minute"] as? Double {
+
+						composedDictionary["score"] = AwareData.convertPM25ToAQI(dataAverage)
+					}
+
 					composedDictionary["humidity"] = humidity
 					composedDictionary["temperature"] = temperature
 					composedDictionary["voc"] = voc
@@ -118,4 +126,6 @@ extension PurpleAirService {
 			}
 		}
 	}
+
+
 }

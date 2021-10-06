@@ -9,8 +9,36 @@ import Foundation
 import CoreLocation
 import UUSwiftCore
 import UUSwiftNetworking
+import CoreLocation
 
-extension AirNowService {
+extension AirNowService : AwareService {
+
+	public func fetchAllDevices(_ completion: @escaping ([AwareDevice]) -> Void) {
+
+		// We create a single device that represents the AirNow EPA network...
+		DispatchQueue.main.async {
+			var dictionary : [String : Any] = [:]
+			dictionary["name"] = "AirNow"
+			if let location = self.location {
+				dictionary["latitude"] = location.latitude
+				dictionary["longitude"] = location.longitude
+			}
+			let device = AwareDevice(["name": "AirNow"])
+			completion([device])
+		}
+	}
+
+	public func fetchLatestData(device: AwareDevice, _ completion: @escaping (AwareData) -> Void) {
+
+		// If we have a location, then prefer that over zipcode
+		if let location = self.location {
+			fetchLatestData(location: location, completion)
+		}
+		else if let zipcode = self.zipcode {
+			fetchLatest(zipcode, completion)
+		}
+	}
+
 
 	public func fetchOnDate(zipcode : String, date : Date = Date(), distance : Int = 25,  _ completion : @escaping(AwareData)->Void) {
 		let dateString = date.uuFourDigitYear + "-" + date.uuNumericMonthOfYear + "-" + date.uuDayOfMonth
@@ -33,7 +61,7 @@ extension AirNowService {
 		}
 	}
 
-	public func fetchLatest(location: CLLocationCoordinate2D, distance : Int = 25, _ completion : @escaping(AwareData)->Void) {
+	public func fetchLatestData(location: CLLocationCoordinate2D, distance : Int = 25, _ completion : @escaping(AwareData)->Void) {
 		let path = AirNowService.latestByLatLongPath + "?format=application/json&latitude=\(location.latitude)&longitude=\(location.longitude)&distance=\(distance)&API_KEY=\(self.accessToken)"
 
 		UUHttpSession.get(url: path) { response in

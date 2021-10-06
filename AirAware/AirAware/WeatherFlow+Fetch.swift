@@ -8,9 +8,9 @@
 import Foundation
 import UUSwiftNetworking
 
-extension WeatherFlowService {
+extension WeatherFlowService : AwareService {
 
-	public func fetchDevices(_ completion : @escaping([AwareDevice])->Void) {
+	public func fetchAllDevices(_ completion : @escaping([AwareDevice])->Void) {
 
 		let path = WeatherFlowService.fetchStationsPath + "?token=" + WeatherFlowService.shared.accessToken
 
@@ -54,7 +54,7 @@ extension WeatherFlowService {
 		}
 	}
 
-	public func fetchCurrentData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
+	public func fetchLatestData(device : AwareDevice, _ completion : @escaping(AwareData)->Void) {
 
 		let path = WeatherFlowService.latestDataPath(device)
 		UUHttpSession.get(url: path) { response in

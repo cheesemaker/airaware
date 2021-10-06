@@ -12,7 +12,7 @@ protocol AwareService {
 
 	func needsLogin() -> Bool
 	func fetchAllDevices(_ completion : @escaping([AwareDevice])->Void)
-	func findClosestDevice(location : CLLocationCoordinate2D, _ completion : @escaping(AwareDevice)->Void)
+	//func findClosestDevice(location : CLLocationCoordinate2D, _ completion : @escaping(AwareDevice)->Void)
 	func fetchLatestData(device : AwareDevice, _ completion : @escaping(AwareData)->Void)
 
 }
