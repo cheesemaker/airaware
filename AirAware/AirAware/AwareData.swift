@@ -24,7 +24,8 @@ public class AwareData {
 	public let dewPoint : Double?
 	public let solarRadiation : Double?
 	public let ozone : Double?
-
+	public let precipitation : Double?
+	public let windSpeed : Double?
 
 
 	init(_ dictionary : [String:Any]) {
@@ -43,6 +44,8 @@ public class AwareData {
 			humidity = AwareData.loadDouble(dictionary["humidity"])
 		}
 
+		windSpeed = AwareData.loadDouble(dictionary["wind_speed"])
+		precipitation = AwareData.loadDouble(dictionary["precipitation"])
 		co2 = AwareData.loadDouble(dictionary["co2"])
 		voc = AwareData.loadDouble(dictionary["voc"])
 		pm25 = AwareData.loadDouble(dictionary["pm25"])
@@ -114,6 +117,7 @@ public class AwareData {
 		}
 	}
 
+	/*
 	static func buildFromServerResponse(_ entry : [String : Any]) -> AwareData {
 
 		var compiledDictionary : [String:Any] = [:]
@@ -135,7 +139,7 @@ public class AwareData {
 		}
 
 		return AwareData(compiledDictionary)
-	}
+	}*/
 }
 
 
@@ -165,6 +169,10 @@ extension AwareData {
 }
 
 extension AwareData {
+
+	static public func convertPressureToBarometric(_ pressure : Double) -> Double {
+		return pressure * 0.0295301
+	}
 
 	static public func convertPM25ToAQI(_ pm25 : Double) -> Double {
 		return convertPMToAQI(pm25, pm25AQITable)

@@ -73,33 +73,15 @@ extension WeatherFlowService : AwareService {
 				}
 
 				if let pressure = observation["sea_level_pressure"] as? Double {
-					composedDictionary["barometric_pressure"] = pressure * 0.0295301
+					composedDictionary["barometric_pressure"] = AwareData.convertPressureToBarometric(pressure)
 				}
+				composedDictionary["precipitation"] = observation["precip_accum_local_day"]
 				composedDictionary["air_density"] = observation["air_density"]
 				composedDictionary["dew_point"] = observation["dew_point"]
 				composedDictionary["heat_index"] = observation["heat_index"]
 				composedDictionary["humidity"] = observation["relative_humidity"]
 				composedDictionary["solar_radiation"] = observation["solar_radiation"]
-
-				/*
-				 precip = 0;
-				 "precip_accum_last_1hr" = 0;
-				 "precip_accum_local_day" = 0;
-				 "precip_accum_local_yesterday" = "16.792112";
-				 "precip_minutes_local_day" = 0;
-				 "precip_minutes_local_yesterday" = 13;
-				 "pressure_trend" = falling;
-				 "sea_level_pressure" = "1022.6";
-				 "station_pressure" = 1013;
-				 timestamp = 1633199724;
-				 uv = "3.48";
-				 "wet_bulb_temperature" = "14.7";
-				 "wind_avg" = "0.5";
-				 "wind_chill" = "19.9";
-				 "wind_direction" = 243;
-				 "wind_gust" = "1.6";
-				 "wind_lull" = 0;
-				 */
+				composedDictionary["wind_speed"] = observation["wind_avg"]
 
 				let data = AwareData(composedDictionary)
 				DispatchQueue.main.async {
