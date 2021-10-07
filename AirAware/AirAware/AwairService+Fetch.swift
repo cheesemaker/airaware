@@ -49,7 +49,8 @@ extension AwairService : AwareService {
 			   let dataArray = data["data"] as? [[String : Any]] {
 
 				for entry in dataArray {
-					let awareData = AwareData.buildFromServerResponse(entry)
+
+					let awareData = self.composeDataFromDictionary(entry)
 					returnArray.append(awareData)
 				}
 			}
@@ -84,9 +85,7 @@ extension AwairService : AwareService {
 			if let data = response.parsedResponse as? [String : Any],
 			   let dataArray = data["data"] as? [[String : Any]],
 			   let entry = dataArray.last {
-
-				let awareData = AwareData.buildFromServerResponse(entry)
-
+				let awareData = self.composeDataFromDictionary(entry)
 				DispatchQueue.main.async {
 					completion(awareData)
 				}
@@ -114,7 +113,7 @@ extension AwairService : AwareService {
 			   let dataArray = data["data"] as? [[String : Any]],
 			   let entry = dataArray.last {
 
-				let awareData = AwareData.buildFromServerResponse(entry)
+				let awareData = self.composeDataFromDictionary(entry)
 				DispatchQueue.main.async {
 					completion(awareData)
 				}
@@ -152,5 +151,30 @@ extension AwairService : AwareService {
 				completion(devices)
 			}
 		})
+	}
+
+	private func composeDataFromDictionary(_ dictionary : [String : Any]) -> AwareData {
+		var composedDictionary : [String : Any] = [:]
+
+		composedDictionary["score"] = dictionary["score"]
+
+		if let array = dictionary["sensors"] as? [[String:Any]] {
+			for sensor in array {
+				if let comp = sensor["comp"] as? String {
+					var name = comp
+					if name == "temp" {
+						name = "temperature"
+					}
+					if name == "humid" {
+						name = "humidity"
+					}
+
+					composedDictionary[name] = sensor["value"]
+				}
+			}
+		}
+
+		let data = AwareData(composedDictionary)
+		return data
 	}
 }

@@ -112,8 +112,7 @@ extension PurpleAirService : AwareService {
 
 					// Convert to barometric pressure from milibars
 					if let pressure = pressure as? Double {
-						let barometer = pressure * 0.0295301
-						composedDictionary["barometric_pressure"] = barometer
+						composedDictionary["barometric_pressure"] = AwareData.convertPressureToBarometric(pressure)
 					}
 					composedDictionary["pm10"] = pm10
 					composedDictionary["pm1"] = pm1
