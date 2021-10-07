@@ -29,6 +29,10 @@
 		C5B6AB5D26FD514B00095918 /* UUSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = C5B6AB5C26FD514B00095918 /* UUSwiftNetworking */; };
 		C5DD5A45270D31830046EFED /* PurpleAirService+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD5A44270D31830046EFED /* PurpleAirService+Routes.swift */; };
 		C5DD5A47270D41B40046EFED /* PurpleAirService+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD5A46270D41B40046EFED /* PurpleAirService+Fetch.swift */; };
+		C5DD5A4B270E99750046EFED /* OpenWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD5A4A270E99750046EFED /* OpenWeatherService.swift */; };
+		C5DD5A4F270E9AEE0046EFED /* OpenWeatherService+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD5A4E270E9AEE0046EFED /* OpenWeatherService+Routes.swift */; };
+		C5DD5A51270E9BB10046EFED /* OpenWeatherService+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD5A50270E9BB10046EFED /* OpenWeatherService+Fetch.swift */; };
+		C5DD5A53270EAE410046EFED /* AwareData+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DD5A52270EAE410046EFED /* AwareData+Conversions.swift */; };
 		C5F04AE22703E24F007C49BA /* AirNowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE12703E24F007C49BA /* AirNowService.swift */; };
 		C5F04AE4270416F0007C49BA /* AirNowService+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */; };
 		C5F04AE62704173E007C49BA /* AirNowService+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */; };
@@ -61,6 +65,10 @@
 		C5B6AB5926FD4EE000095918 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		C5DD5A44270D31830046EFED /* PurpleAirService+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PurpleAirService+Routes.swift"; sourceTree = "<group>"; };
 		C5DD5A46270D41B40046EFED /* PurpleAirService+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PurpleAirService+Fetch.swift"; sourceTree = "<group>"; };
+		C5DD5A4A270E99750046EFED /* OpenWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherService.swift; sourceTree = "<group>"; };
+		C5DD5A4E270E9AEE0046EFED /* OpenWeatherService+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherService+Routes.swift"; sourceTree = "<group>"; };
+		C5DD5A50270E9BB10046EFED /* OpenWeatherService+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWeatherService+Fetch.swift"; sourceTree = "<group>"; };
+		C5DD5A52270EAE410046EFED /* AwareData+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AwareData+Conversions.swift"; sourceTree = "<group>"; };
 		C5F04AE12703E24F007C49BA /* AirNowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirNowService.swift; sourceTree = "<group>"; };
 		C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Authorization.swift"; sourceTree = "<group>"; };
 		C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Routes.swift"; sourceTree = "<group>"; };
@@ -156,18 +164,30 @@
 			isa = PBXGroup;
 			children = (
 				C5B6AB5026FD4ED700095918 /* AwareData.swift */,
+				C5DD5A52270EAE410046EFED /* AwareData+Conversions.swift */,
 				C5B6AB5226FD4ED700095918 /* AwareDevice.swift */,
 				C50A0BCB2708E18400E06DB4 /* AwareService.swift */,
 				C50A0BCD270A1E2C00E06DB4 /* AwareDataView.swift */,
 				C50A0BD3270A333200E06DB4 /* AirThings */,
 				C50A0BB92708064400E06DB4 /* AirNow */,
 				C50A0BC12708081A00E06DB4 /* Awair */,
+				C5DD5A49270E99590046EFED /* OpenWeather */,
 				C50A0BDA270BB1CA00E06DB4 /* PurpleAir */,
 				C50A0BBA2708065500E06DB4 /* WeatherFlow */,
 				C5B6AB4426FD4E8300095918 /* AirAware.h */,
 				C5B6AB4526FD4E8300095918 /* AirAware.docc */,
 			);
 			path = AirAware;
+			sourceTree = "<group>";
+		};
+		C5DD5A49270E99590046EFED /* OpenWeather */ = {
+			isa = PBXGroup;
+			children = (
+				C5DD5A4A270E99750046EFED /* OpenWeatherService.swift */,
+				C5DD5A4E270E9AEE0046EFED /* OpenWeatherService+Routes.swift */,
+				C5DD5A50270E9BB10046EFED /* OpenWeatherService+Fetch.swift */,
+			);
+			path = OpenWeather;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,12 +291,16 @@
 				C50A0BBE270806D300E06DB4 /* WeatherFlowService+Authorization.swift in Sources */,
 				C5DD5A45270D31830046EFED /* PurpleAirService+Routes.swift in Sources */,
 				C5B6AB5426FD4ED700095918 /* AwairService.swift in Sources */,
+				C5DD5A53270EAE410046EFED /* AwareData+Conversions.swift in Sources */,
 				C50A0BCC2708E18400E06DB4 /* AwareService.swift in Sources */,
+				C5DD5A51270E9BB10046EFED /* OpenWeatherService+Fetch.swift in Sources */,
 				C50A0BC82708162900E06DB4 /* WeatherFlow+Fetch.swift in Sources */,
 				C50A0BD7270A623600E06DB4 /* AirThings+Routes.swift in Sources */,
+				C5DD5A4F270E9AEE0046EFED /* OpenWeatherService+Routes.swift in Sources */,
 				C5B6AB4626FD4E8300095918 /* AirAware.docc in Sources */,
 				C50A0BCE270A1E2C00E06DB4 /* AwareDataView.swift in Sources */,
 				C50A0BC02708071900E06DB4 /* WeatherFlow+Routes.swift in Sources */,
+				C5DD5A4B270E99750046EFED /* OpenWeatherService.swift in Sources */,
 				C50A0BDC270BB1E800E06DB4 /* PurpleAirService.swift in Sources */,
 				C5F04AE22703E24F007C49BA /* AirNowService.swift in Sources */,
 			);

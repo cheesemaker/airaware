@@ -46,6 +46,15 @@ public class AwareDataView: UIView {
 			self.stackView.addArrangedSubview(self.createLabel(name: "Humidity:", value: data.string(value)))
 		}
 
+		if let value = data.precipitation {
+			self.stackView.addArrangedSubview(self.createLabel(name: "Precipitation:", value: data.string(value)))
+		}
+
+		if let value = data.windSpeed {
+			self.stackView.addArrangedSubview(self.createLabel(name: "Wind Speed:", value: data.string(value)))
+		}
+
+		
 		if let value = data.co2 {
 			self.stackView.addArrangedSubview(self.createLabel(name: "CO2:", value: data.string(value)))
 		}

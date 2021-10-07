@@ -22,6 +22,8 @@ private let awairClientID = "12d1f95f0f4a4228b58c1936484ee1b2"
 private let awairClientSecret = "3d28a325142f47a1a2e750a9a213dd15"
 private let awairRedirectURL = "http://airaware.dev"
 
+private let openWeatherKey = "915d5b26a884b1297a06e2de04c6f5c2"
+
 
 class ViewController: UIViewController {
 
@@ -29,6 +31,8 @@ class ViewController: UIViewController {
 	let awairLoginButton = UIButton()
 	let weatherFlowLoginButton = UIButton()
 	let purpleAirLoginButton = UIButton()
+	let openWeatherLoginButton = UIButton()
+
 	let stackView = UIStackView()
 
 	// A few helper functions to manage state+location
@@ -42,14 +46,18 @@ class ViewController: UIViewController {
 		self.setupAwairService()
 		self.setupWeatherFlowService()
 		self.setupPurpleAirService()
+		self.setupOpenWeatherService()
 	}
 
 	func setupStackView() {
+		self.stackView.backgroundColor = .lightGray
+		self.stackView.layer.cornerRadius = 8.0
+		self.stackView.clipsToBounds = true
 		self.view.addSubview(self.stackView)
 		self.stackView.translatesAutoresizingMaskIntoConstraints = false
 		self.stackView.axis = .vertical
 		self.stackView.spacing = 16.0
-		self.stackView.distribution = .equalCentering
+		self.stackView.distribution = .equalSpacing
 		self.stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
 		self.stackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20.0).isActive = true
 		self.stackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20.0).isActive = true
@@ -210,6 +218,32 @@ class ViewController: UIViewController {
 		self.purpleAirLoginButton.removeFromSuperview()
 	}
 
+
+	// ///////////////////////////////////////////////////////////////////////////////////////////////
+	// MARK: -
+	// MARK: OpenWeather
+
+	func setupOpenWeatherService() {
+		OpenWeatherService.setup(accessToken: openWeatherKey)
+		self.openWeatherLoginButton.setTitle("OpenWeather Login", for: .normal)
+		self.openWeatherLoginButton.addTarget(self, action: #selector(onOpenWeatherLogin), for: .touchUpInside)
+		self.stackView.addArrangedSubview(self.openWeatherLoginButton)
+	}
+
+
+	@objc func onOpenWeatherLogin() {
+
+		self.openWeatherLoginButton.removeFromSuperview()
+		OpenWeatherService.shared.fetchAllDevices { devices in
+			if let device = devices.first {
+				OpenWeatherService.shared.fetchLatestData(device: device) { data in
+
+					let view = AwareDataView(title: "OpenWeather: " + device.name, data)
+					self.stackView.addArrangedSubview(view)
+				}
+			}
+		}
+	}
 }
 
 
