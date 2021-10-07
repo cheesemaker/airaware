@@ -40,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C50546A6270F50A500FAD5D5 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C50546A7270F50A500FAD5D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C50A0BBB2708067300E06DB4 /* WeatherFlowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFlowService.swift; sourceTree = "<group>"; };
 		C50A0BBD270806D300E06DB4 /* WeatherFlowService+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherFlowService+Authorization.swift"; sourceTree = "<group>"; };
 		C50A0BBF2708071900E06DB4 /* WeatherFlow+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherFlow+Routes.swift"; sourceTree = "<group>"; };
@@ -47,8 +49,6 @@
 		C50A0BC92708188D00E06DB4 /* AwairService+Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AwairService+Device.swift"; sourceTree = "<group>"; };
 		C50A0BCB2708E18400E06DB4 /* AwareService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwareService.swift; sourceTree = "<group>"; };
 		C50A0BCD270A1E2C00E06DB4 /* AwareDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwareDataView.swift; sourceTree = "<group>"; };
-		C50A0BCF270A31B000E06DB4 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		C50A0BD0270A31B000E06DB4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		C50A0BD4270A334C00E06DB4 /* AirThingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirThingsService.swift; sourceTree = "<group>"; };
 		C50A0BD6270A623600E06DB4 /* AirThings+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirThings+Routes.swift"; sourceTree = "<group>"; };
 		C50A0BD8270A624A00E06DB4 /* AirThingsService+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirThingsService+Authorization.swift"; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 		C5B6AB3726FD4E8300095918 = {
 			isa = PBXGroup;
 			children = (
-				C50A0BCF270A31B000E06DB4 /* LICENSE */,
-				C50A0BD0270A31B000E06DB4 /* README.md */,
+				C50546A6270F50A500FAD5D5 /* LICENSE */,
+				C50546A7270F50A500FAD5D5 /* README.md */,
 				C5B6AB5926FD4EE000095918 /* Package.swift */,
 				C5B6AB4326FD4E8300095918 /* AirAware */,
 				C5B6AB4226FD4E8300095918 /* Products */,

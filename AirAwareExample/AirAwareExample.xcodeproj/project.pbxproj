@@ -13,14 +13,12 @@
 		C5B6AB9226FD53FD00095918 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B6AB9026FD53FD00095918 /* Main.storyboard */; };
 		C5B6AB9426FD540000095918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5B6AB9326FD540000095918 /* Assets.xcassets */; };
 		C5B6AB9726FD540000095918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5B6AB9526FD540000095918 /* LaunchScreen.storyboard */; };
-		C5B6ABA526FD567F00095918 /* AirAware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B6ABA326FD540C00095918 /* AirAware.framework */; };
-		C5B6ABA626FD567F00095918 /* AirAware.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5B6ABA326FD540C00095918 /* AirAware.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C5B6ABA226FD540C00095918 /* PBXContainerItemProxy */ = {
+		C50546A4270F509200FAD5D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C5B6AB9E26FD540C00095918 /* AirAware.xcodeproj */;
+			containerPortal = C50546A0270F509200FAD5D5 /* AirAware.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = C5B6AB4126FD4E8300095918;
 			remoteInfo = AirAware;
@@ -34,7 +32,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C5B6ABA626FD567F00095918 /* AirAware.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C50546A0270F509200FAD5D5 /* AirAware.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirAware.xcodeproj; path = ../AirAware.xcodeproj; sourceTree = "<group>"; };
 		C5B6AB8726FD53FD00095918 /* AirAwareExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirAwareExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B6AB8A26FD53FD00095918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5B6AB8C26FD53FD00095918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +48,6 @@
 		C5B6AB9326FD540000095918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5B6AB9626FD540000095918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5B6AB9826FD540000095918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5B6AB9E26FD540C00095918 /* AirAware.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AirAware.xcodeproj; path = ../AirAware/AirAware.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,17 +55,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5B6ABA526FD567F00095918 /* AirAware.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C50546A1270F509200FAD5D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C50546A5270F509200FAD5D5 /* AirAware.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C5B6AB7E26FD53FD00095918 = {
 			isa = PBXGroup;
 			children = (
-				C5B6AB9E26FD540C00095918 /* AirAware.xcodeproj */,
+				C50546A0270F509200FAD5D5 /* AirAware.xcodeproj */,
 				C5B6AB8926FD53FD00095918 /* AirAwareExample */,
 				C5B6AB8826FD53FD00095918 /* Products */,
 				C5B6ABA426FD567F00095918 /* Frameworks */,
@@ -95,14 +99,6 @@
 				C5B6AB9826FD540000095918 /* Info.plist */,
 			);
 			path = AirAwareExample;
-			sourceTree = "<group>";
-		};
-		C5B6AB9F26FD540C00095918 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C5B6ABA326FD540C00095918 /* AirAware.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		C5B6ABA426FD567F00095918 /* Frameworks */ = {
@@ -161,8 +157,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C5B6AB9F26FD540C00095918 /* Products */;
-					ProjectRef = C5B6AB9E26FD540C00095918 /* AirAware.xcodeproj */;
+					ProductGroup = C50546A1270F509200FAD5D5 /* Products */;
+					ProjectRef = C50546A0270F509200FAD5D5 /* AirAware.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -173,11 +169,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C5B6ABA326FD540C00095918 /* AirAware.framework */ = {
+		C50546A5270F509200FAD5D5 /* AirAware.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = AirAware.framework;
-			remoteRef = C5B6ABA226FD540C00095918 /* PBXContainerItemProxy */;
+			remoteRef = C50546A4270F509200FAD5D5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
