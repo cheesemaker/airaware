@@ -20,7 +20,7 @@ AirAware is an open source framework to help developers monitor and understand t
 
 - For OpenWeather, you must create a login and request an API key See [https://openweathermap.org/api](https://openweathermap.org/api) for more information.
 
-<img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpeg">
+<img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpeg" width=50%>
 
 ## Installation
 
