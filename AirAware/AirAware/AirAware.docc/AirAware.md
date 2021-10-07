@@ -5,12 +5,20 @@ AirAware is an open source framework to help developers monitor and understand t
 - Awair© smart devices for monitoring indoor air quality
 - AirNow - the EPA supported AQI (Air Quality Indicator) service
 - WeatherFlow - Outdoor weather station readings when configured to use a WF base-station
+- PurpleAir - Network of weather stations maintained and owned by private citizens
+- OpenWeather - Current localized weather 
 
-For Awair© devices, the library supports both OAuth and direct access token integrations. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
 
-For WeatherFlow© devices, it supports OAuth.
+## Accounts and API Keys:
+- For Awair© devices, the library supports both OAuth and direct access token integrations. See [https://docs.developer.getawair.com](https://docs.developer.getawair.com) for more information.
 
-For the AirNow service, it supports both an embedded web login as well as native username/password support. An active user account is required for each user, however retrieval of the access key has been automated.
+- For WeatherFlow© devices, it supports OAuth via a user account. See [https://weatherflow.github.io/Tempest/api/oauth.html](https://weatherflow.github.io/Tempest/api/oauth.html) for more information.
+
+- For the AirNow service, it supports both an embedded web login as well as native username/password support. An active user account is required for each user, however retrieval of the access key has been automated. See [https://docs.airnowapi.org](https://docs.airnowapi.org)
+
+- For the PurpleAir service, no login is required, however an API key must be requested and obtained from Purple [contact@purpleair.com](contact@purpleair.com)
+
+- For OpenWeather, you must create a login and request an API key See [https://openweathermap.org/api](https://openweathermap.org/api) for more information.
 
 <img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/screenshot.jpeg">
 
@@ -45,8 +53,9 @@ AirAware is written entirely in Swift and currently does not support Objective-C
 
 ## License
 
-AirAware is available under the Apache 2.0 license. See [`LICENSE.md`](https://github.com/cheesemaker/airaware/blob/master/LICENSE.md) for more information.
+AirAware is available under the MIT license. See [`LICENSE.md`](https://github.com/cheesemaker/airaware/blob/master/LICENSE.md) for more information.
 
 ## Contributors
 
  [A list of contributors is available through GitHub.](https://github.com/cheesemaker/airaware/graphs/contributors)
+
