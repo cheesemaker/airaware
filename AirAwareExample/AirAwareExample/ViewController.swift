@@ -9,22 +9,6 @@ import UIKit
 import AirAware
 import CoreLocation
 
-let weatherFlowClientID = "697ac9ce-0310-4cc8-a73b-6f725b5473c8"
-let weatherFlowSecret = "85a4e3ac-1a76-4a28-af2b-1dc48dbb5f07"
-let weatherFlowRedirectURL = "weatherflow.airaware.dev"
-
-let purpleReadKey = "22F80E0E-252A-11EC-BAD6-42010A800017"
-let purpleWriteKey = "22F8D1A9-252A-11EC-BAD6-42010A800017"
-
-
-// These are the AirAware keys. You can/should replace with your own...
-private let awairClientID = "12d1f95f0f4a4228b58c1936484ee1b2"
-private let awairClientSecret = "3d28a325142f47a1a2e750a9a213dd15"
-private let awairRedirectURL = "http://airaware.dev"
-
-private let openWeatherKey = "915d5b26a884b1297a06e2de04c6f5c2"
-
-
 class ViewController: UIViewController {
 
 	let airNowLoginButton = UIButton()
