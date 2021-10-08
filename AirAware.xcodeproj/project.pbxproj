@@ -53,7 +53,6 @@
 		C50A0BD6270A623600E06DB4 /* AirThings+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirThings+Routes.swift"; sourceTree = "<group>"; };
 		C50A0BD8270A624A00E06DB4 /* AirThingsService+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirThingsService+Authorization.swift"; sourceTree = "<group>"; };
 		C50A0BDB270BB1E800E06DB4 /* PurpleAirService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleAirService.swift; sourceTree = "<group>"; };
-		C53EF37B270FEEEC0023F82E /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		C5B6AB4126FD4E8300095918 /* AirAware.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AirAware.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B6AB4426FD4E8300095918 /* AirAware.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirAware.h; sourceTree = "<group>"; };
 		C5B6AB4526FD4E8300095918 /* AirAware.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AirAware.docc; sourceTree = "<group>"; };
@@ -145,7 +144,6 @@
 		C5B6AB3726FD4E8300095918 = {
 			isa = PBXGroup;
 			children = (
-				C53EF37B270FEEEC0023F82E /* .travis.yml */,
 				C50546A6270F50A500FAD5D5 /* LICENSE */,
 				C50546A7270F50A500FAD5D5 /* README.md */,
 				C5B6AB5926FD4EE000095918 /* Package.swift */,

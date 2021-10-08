@@ -1,10 +1,5 @@
-language: swift
-osx_image: xcode10
-
-branches:
- only:
- - master
-
-script:
- - xcodebuild build -project AirAware.xcodeproj -scheme AirAware -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' | xcpretty
-
+version: 1
+builder:
+  configs:
+  - platform: ios
+    scheme: AirAware
