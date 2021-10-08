@@ -1,4 +1,7 @@
 # AirAware
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fcheesemaker%2Fairaware%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/cheesemaker/airaware)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fcheesemaker%2Fairaware%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/cheesemaker/airaware)
+
 <img src = "https://raw.githubusercontent.com/cheesemaker/airaware/main/Documents/icon.png" width=64 height = 64>
 
 AirAware is an open source framework to help developers monitor and understand the air quality around them. Currently, AirAware supports:
