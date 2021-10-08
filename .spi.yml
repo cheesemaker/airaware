@@ -3,3 +3,11 @@ builder:
   configs:
   - platform: ios
     scheme: AirAware
+  - platform: macos-xcodebuild
+    scheme: AirAware
+  - platform: macos-xcodebuild-arm
+    scheme: AirAware
+  - platform: tvos
+    scheme: AirAware
+  - platform: watchos
+    scheme: AirAware
