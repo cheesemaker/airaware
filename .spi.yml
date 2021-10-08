@@ -7,3 +7,4 @@ branches:
 
 script:
  - xcodebuild build -project AirAware.xcodeproj -scheme AirAware -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.3' | xcpretty
+
