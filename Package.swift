@@ -21,7 +21,7 @@ let package = Package(
 	dependencies: [
 		.package(
 			url: "https://github.com/SilverPineSoftware/UUSwiftNetworking.git",
-			from: "1.0.5"
+			from: "1.0.9"
 		)
 	],
 
