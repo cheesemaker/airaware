@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/SilverPineSoftware/UUSwiftCore.git",
         "state": {
           "branch": null,
-          "revision": "028ebae602272ac68c0ae8840b2269f14fd1a58b",
-          "version": "1.0.4"
+          "revision": "2a38c83b4903bfe7239b57b2e248a421cdf6f365",
+          "version": "1.1.2"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/SilverPineSoftware/UUSwiftNetworking",
         "state": {
           "branch": null,
-          "revision": "8d587368712ffad5ed1b69eac0b2ae84040853df",
-          "version": "1.0.5"
+          "revision": "d4fd574666cbc097bbf1396943e4987e42643726",
+          "version": "1.0.7"
         }
       }
     ]
