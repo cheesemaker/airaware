@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5966F8527154A6500630E65 /* AirAware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C50546A5270F509200FAD5D5 /* AirAware.framework */; };
+		C5966F8627154A8D00630E65 /* AirAware.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C50546A5270F509200FAD5D5 /* AirAware.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5B6AB8B26FD53FD00095918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB8A26FD53FD00095918 /* AppDelegate.swift */; };
 		C5B6AB8D26FD53FD00095918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB8C26FD53FD00095918 /* SceneDelegate.swift */; };
 		C5B6AB8F26FD53FD00095918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B6AB8E26FD53FD00095918 /* ViewController.swift */; };
@@ -32,6 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C5966F8627154A8D00630E65 /* AirAware.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5966F8527154A6500630E65 /* AirAware.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +129,8 @@
 			dependencies = (
 			);
 			name = AirAwareExample;
+			packageProductDependencies = (
+			);
 			productName = AirAwareExample;
 			productReference = C5B6AB8726FD53FD00095918 /* AirAwareExample.app */;
 			productType = "com.apple.product-type.application";
@@ -153,6 +159,8 @@
 				Base,
 			);
 			mainGroup = C5B6AB7E26FD53FD00095918;
+			packageReferences = (
+			);
 			productRefGroup = C5B6AB8826FD53FD00095918 /* Products */;
 			projectDirPath = "";
 			projectReferences = (

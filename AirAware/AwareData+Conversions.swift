@@ -21,6 +21,14 @@ extension AwareData {
 		return convertPMToAQI(pm25, pm10AQITable)
 	}
 
+	static public func convertCelsiusToFahrenheit(_ degrees : Double) -> Double {
+		return ((degrees * 9.0) / 5.0) + 32.0
+	}
+
+	static public func convertFahrenheitToCelsius(_ degreees : Double) -> Double {
+		return ((degreees - 32.0) * 5.0) / 9.0
+	}
+
 	// //////////////////////////////////////////////////////////////////////////////////////////////
 	// Conversion code, adapted from:
 	// https://github.com/nickpegg/purple_air_scraper/blob/master/purple_air_scraper.py

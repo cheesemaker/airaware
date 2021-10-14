@@ -8,6 +8,9 @@
 import UIKit
 import AirAware
 import CoreLocation
+import UUSwiftBluetooth
+import CoreBluetooth
+import SwiftUI
 
 // Insert the ID's and keys for your project here...
 let awairClientID = ""
@@ -19,6 +22,8 @@ let weatherFlowRedirectURL = ""
 let purpleReadKey = ""
 let openWeatherKey = ""
 
+
+
 class ViewController: UIViewController {
 
 	let airNowLoginButton = UIButton()
@@ -26,11 +31,14 @@ class ViewController: UIViewController {
 	let weatherFlowLoginButton = UIButton()
 	let purpleAirLoginButton = UIButton()
 	let openWeatherLoginButton = UIButton()
+	let airThingsLoginButton = UIButton()
 
 	let stackView = UIStackView()
 
 	// A few helper functions to manage state+location
 	let locationManager = CLLocationManager()
+
+
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,6 +49,7 @@ class ViewController: UIViewController {
 		self.setupWeatherFlowService()
 		self.setupPurpleAirService()
 		self.setupOpenWeatherService()
+		self.setupAirThingsService()
 	}
 
 	func setupStackView() {
@@ -90,6 +99,31 @@ class ViewController: UIViewController {
 			if complete {
 				self.awairLoginButton.removeFromSuperview()
 				self.updateAwairDevice()
+			}
+		}
+	}
+
+	// ///////////////////////////////////////////////////////////////////////////////////////////////
+	// MARK: -
+	// MARK: AirThings
+
+	func setupAirThingsService() {
+		self.airThingsLoginButton.addTarget(self, action: #selector(onAirThingsLogin), for: .touchUpInside)
+		self.airThingsLoginButton.setTitle("Scan For AirThings", for: .normal)
+		self.stackView.addArrangedSubview(self.airThingsLoginButton)
+	}
+
+	@objc func onAirThingsLogin() {
+		self.airThingsLoginButton.isEnabled = false
+		self.airThingsLoginButton.setTitle("Scanning for AirThings...", for: .normal)
+
+		AirThingsBluetoothService.shared.fetchAllDevices { devices in
+			if let device = devices.first {
+				AirThingsBluetoothService.shared.fetchLatestData(device: device) { data in
+					self.airThingsLoginButton.removeFromSuperview()
+					let view = AwareDataView(title: device.name, data)
+					self.stackView.addArrangedSubview(view)
+				}
 			}
 		}
 	}

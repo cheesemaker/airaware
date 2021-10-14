@@ -37,6 +37,8 @@
 		C5F04AE4270416F0007C49BA /* AirNowService+Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */; };
 		C5F04AE62704173E007C49BA /* AirNowService+Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */; };
 		C5F04AE8270434F2007C49BA /* AirNowService+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F04AE7270434F2007C49BA /* AirNowService+Fetch.swift */; };
+		C5F9761F2717EC77002C9255 /* AirThingsBluetoothService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F9761E2717EC76002C9255 /* AirThingsBluetoothService.swift */; };
+		C5F976222718A6B1002C9255 /* UUSwiftBluetooth in Frameworks */ = {isa = PBXBuildFile; productRef = C5F976212718A6B1002C9255 /* UUSwiftBluetooth */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,7 @@
 		C5F04AE3270416F0007C49BA /* AirNowService+Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Authorization.swift"; sourceTree = "<group>"; };
 		C5F04AE52704173E007C49BA /* AirNowService+Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Routes.swift"; sourceTree = "<group>"; };
 		C5F04AE7270434F2007C49BA /* AirNowService+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AirNowService+Fetch.swift"; sourceTree = "<group>"; };
+		C5F9761E2717EC76002C9255 /* AirThingsBluetoothService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirThingsBluetoothService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5B6AB5D26FD514B00095918 /* UUSwiftNetworking in Frameworks */,
+				C5F976222718A6B1002C9255 /* UUSwiftBluetooth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				C50A0BD4270A334C00E06DB4 /* AirThingsService.swift */,
+				C5F9761E2717EC76002C9255 /* AirThingsBluetoothService.swift */,
 				C50A0BD8270A624A00E06DB4 /* AirThingsService+Authorization.swift */,
 				C50A0BD6270A623600E06DB4 /* AirThings+Routes.swift */,
 			);
@@ -220,6 +225,7 @@
 			name = AirAware;
 			packageProductDependencies = (
 				C5B6AB5C26FD514B00095918 /* UUSwiftNetworking */,
+				C5F976212718A6B1002C9255 /* UUSwiftBluetooth */,
 			);
 			productName = AirAware;
 			productReference = C5B6AB4126FD4E8300095918 /* AirAware.framework */;
@@ -250,6 +256,7 @@
 			mainGroup = C5B6AB3726FD4E8300095918;
 			packageReferences = (
 				C5B6AB5B26FD514B00095918 /* XCRemoteSwiftPackageReference "UUSwiftNetworking" */,
+				C5F976202718A6B1002C9255 /* XCRemoteSwiftPackageReference "uuswiftbluetooth" */,
 			);
 			productRefGroup = C5B6AB4226FD4E8300095918 /* Products */;
 			projectDirPath = "";
@@ -285,6 +292,7 @@
 				C50A0BD5270A334C00E06DB4 /* AirThingsService.swift in Sources */,
 				C5B6AB5326FD4ED700095918 /* AwairService+Authorization.swift in Sources */,
 				C5F04AE4270416F0007C49BA /* AirNowService+Authorization.swift in Sources */,
+				C5F9761F2717EC77002C9255 /* AirThingsBluetoothService.swift in Sources */,
 				C5B6AB5726FD4ED700095918 /* AwairService+Routes.swift in Sources */,
 				C5B6AB5526FD4ED700095918 /* AwairService+Fetch.swift in Sources */,
 				C5B6AB5826FD4ED700095918 /* AwareDevice.swift in Sources */,
@@ -523,6 +531,14 @@
 				minimumVersion = 1.0.9;
 			};
 		};
+		C5F976202718A6B1002C9255 /* XCRemoteSwiftPackageReference "uuswiftbluetooth" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/silverpinesoftware/uuswiftbluetooth";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -530,6 +546,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C5B6AB5B26FD514B00095918 /* XCRemoteSwiftPackageReference "UUSwiftNetworking" */;
 			productName = UUSwiftNetworking;
+		};
+		C5F976212718A6B1002C9255 /* UUSwiftBluetooth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C5F976202718A6B1002C9255 /* XCRemoteSwiftPackageReference "uuswiftbluetooth" */;
+			productName = UUSwiftBluetooth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

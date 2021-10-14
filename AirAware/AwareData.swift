@@ -74,6 +74,9 @@ public class AwareData {
 		if let val = value as? Double {
 			return val
 		}
+		else if let val = value as? Float {
+			return Double(val)
+		}
 		else if let val = value as? Int {
 			return Double(val)
 		}
@@ -95,6 +98,9 @@ public class AwareData {
 			return val
 		}
 		else if let val = value as? Double {
+			return Int(val)
+		}
+		else if let val = value as? Float {
 			return Int(val)
 		}
 		else {

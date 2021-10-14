@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "UUSwiftBluetooth",
+        "repositoryURL": "https://github.com/silverpinesoftware/uuswiftbluetooth",
+        "state": {
+          "branch": "main",
+          "revision": "eac758b55980462523df464d870a553f920275a3",
+          "version": null
+        }
+      },
+      {
         "package": "UUSwiftCore",
         "repositoryURL": "https://github.com/SilverPineSoftware/UUSwiftCore.git",
         "state": {
